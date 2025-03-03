@@ -18,10 +18,12 @@
                         <option value="1">Rogge</option>
                     </select>
                 </div>
-                <div class="mb-3">
-                    <input type="range" class="form-range" id="doughWeight" min="500" max="5000" step="100" value="2000">
-                    <span id="doughWeightValue" class="doughWeightValue">2000 g</span>
-                </div>
+                <div class="mb-3 d-flex align-items-center">
+    			<button class="btn btn-secondary" id="decreaseWeight">-</button>
+    			<input type="number" class="form-control text-center mx-2" id="doughWeight" min="500" max="5000" step="100" value="2500">
+    			<button class="btn btn-secondary" id="increaseWeight">+</button>
+		</div>
+		<span id="doughWeightValue" class="doughWeightValue">2500 g</span>
             </div>
         </div>
 
