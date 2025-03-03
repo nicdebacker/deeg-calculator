@@ -19,7 +19,7 @@ body {
 .list-group-item .ingredient-amount {
     font-weight: normal;
     text-align: right;
-    min-width: 80px;  /* To ensure the amounts have some space */
+    padding-right: 15px;
 }
 
 .list-group-item .ingredient-name {
