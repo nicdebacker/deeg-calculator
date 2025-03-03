@@ -61,7 +61,7 @@ $(document).ready(function() {
         }
 
         // Calculate the feeding amount for the starter
-        let starterAmount = bread.Starter;
+        let starterAmount = Math.round(bread.Starter * scalingFactor);
         let feed1 = starterAmount / 2.5;
         let feed2 = feed1 / 2.5;
 
