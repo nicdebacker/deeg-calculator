@@ -48,6 +48,11 @@ $(document).ready(function() {
         let ingredientsList = $('#ingredientsList');
         ingredientsList.empty(); // Clear previous results
 
+        // Header for ingredients
+        ingredientsList.append(
+            `<h3>Ingrediënten</h3>`
+        );
+
         for (let ingredient in ingredients) {
             // Only show ingredients that have a value greater than 0g
             if (ingredients[ingredient] > 0) {
@@ -65,9 +70,18 @@ $(document).ready(function() {
         let feed1 = starterAmount / 2.5;
         let feed2 = feed1 / 2.5;
 
+        // Create a new section for "Voeden"
+        let feedList = $('#feedList');
+        feedList.empty(); // Clear previous feed results
+
+        // Header for Voeden
+        feedList.append(
+            `<h3>Voeden</h3>`
+        );
+
         // Add feeding amounts to the list, only if greater than 0g
         if (feed1 > 0) {
-            ingredientsList.append(
+            feedList.append(
                 `<li class="list-group-item d-flex justify-content-between align-items-center">
                     1x Voeden
                     <span class="badge bg-warning rounded-pill">${Math.round(feed1)} g</span>
@@ -76,7 +90,7 @@ $(document).ready(function() {
         }
 
         if (feed2 > 0) {
-            ingredientsList.append(
+            feedList.append(
                 `<li class="list-group-item d-flex justify-content-between align-items-center">
                     2x Voeden
                     <span class="badge bg-warning rounded-pill">${Math.round(feed2)} g</span>
