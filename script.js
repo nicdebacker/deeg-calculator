@@ -18,19 +18,24 @@ $(document).ready(function() {
 
         let bread = breadData[breadTypeIndex];
 
-        // Calculate the total weight of the bread ingredients
-        let totalWeight = bread.Tarwe + bread.Water + bread.Starter + bread.Zout;
+        // Calculate the total weight of the bread ingredients (sum all columns except the first one)
+        let totalWeight = 0;
+        for (let key in bread) {
+            if (key !== "Type") {
+                totalWeight += bread[key];
+            }
+        }
 
         // Calculate the scaling factor based on desired dough weight
         let scalingFactor = doughWeight / totalWeight;
 
         // Calculate the required ingredients based on the scaling factor
-        let ingredients = {
-            "Tarwe": Math.round(bread.Tarwe * scalingFactor),
-            "Water": Math.round(bread.Water * scalingFactor),
-            "Starter": Math.round(bread.Starter * scalingFactor),
-            "Zout": Math.round(bread.Zout * scalingFactor),
-        };
+        let ingredients = {};
+        for (let key in bread) {
+            if (key !== "Type") {
+                ingredients[key] = Math.round(bread[key] * scalingFactor);
+            }
+        }
 
         // Display the calculated ingredients
         let ingredientsList = $('#ingredientsList');
