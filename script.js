@@ -4,8 +4,21 @@ $(document).ready(function() {
 
     $.getJSON('bread_data.json', function(data) {
         breadData = data;
+        populateDropdown();  // Populate dropdown with bread types
         updateIngredients();  // Update ingredients on initial load
     });
+
+    // Function to populate the dropdown dynamically
+    function populateDropdown() {
+        let dropdown = $('#breadType');
+        dropdown.empty(); // Clear existing options
+
+        $.each(breadData, function(index, bread) {
+            dropdown.append($('<option></option>').attr('value', index).text(bread.Type));
+        });
+
+        dropdown.trigger('change'); // Trigger change to update ingredients
+    }
 
     // Function to update the displayed dough weight
     $('#doughWeight').on('input', function() {
