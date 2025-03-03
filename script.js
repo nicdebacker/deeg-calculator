@@ -53,8 +53,8 @@ $(document).ready(function() {
             if (ingredients[ingredient] > 0) {
                 ingredientsList.append(
                     `<li class="list-group-item d-flex justify-content-between align-items-center">
-                        ${ingredient}
-                        <span class="badge bg-primary rounded-pill">${ingredients[ingredient]} g</span>
+                        <span class="ingredient-name">${ingredient}</span>
+                        <span class="ingredient-amount">${ingredients[ingredient]} g</span>
                     </li>`
                 );
             }
@@ -73,8 +73,8 @@ $(document).ready(function() {
         if (feed1 > 0) {
             feedList.append(
                 `<li class="list-group-item d-flex justify-content-between align-items-center">
-                    1x Voeden
-                    <span class="badge bg-warning rounded-pill">${Math.round(feed1)} g</span>
+                    <span class="ingredient-name">1x Voeden</span>
+                    <span class="ingredient-amount">${Math.round(feed1)} g</span>
                 </li>`
             );
         }
@@ -82,8 +82,8 @@ $(document).ready(function() {
         if (feed2 > 0) {
             feedList.append(
                 `<li class="list-group-item d-flex justify-content-between align-items-center">
-                    2x Voeden
-                    <span class="badge bg-warning rounded-pill">${Math.round(feed2)} g</span>
+                    <span class="ingredient-name">2x Voeden</span>
+                    <span class="ingredient-amount">${Math.round(feed2)} g</span>
                 </li>`
             );
         }
