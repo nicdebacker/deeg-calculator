@@ -12,12 +12,17 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 5px 15px;
 }
 
+/* Align ingredient name to the left and amount to the right */
 .list-group-item .ingredient-name {
     font-weight: bold;
+    flex-grow: 1;
 }
 
 .list-group-item .ingredient-amount {
     font-weight: normal;
+    text-align: right;
+    min-width: 80px;  /* To ensure the amounts have some space */
 }
