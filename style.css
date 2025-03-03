@@ -18,7 +18,7 @@ body {
 /* Align amount first, then ingredient name */
 .list-group-item .ingredient-amount {
     font-weight: normal;
-    text-align: left;
+    text-align: right;
     min-width: 80px;  /* To ensure the amounts have some space */
 }
 
