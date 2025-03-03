@@ -4,15 +4,22 @@ $(document).ready(function() {
 
     $.getJSON('bread_data.json', function(data) {
         breadData = data;
+        updateIngredients();  // Update ingredients on initial load
     });
 
     // Function to update the displayed dough weight
     $('#doughWeight').on('input', function() {
         $('#doughWeightValue').text($(this).val() + ' g');
+        updateIngredients();  // Update ingredients when dough weight changes
     });
 
-    // Calculate and display ingredients when the button is clicked
-    $('#calculateBtn').click(function() {
+    // Function to update ingredients when bread type or dough weight changes
+    $('#breadType').change(function() {
+        updateIngredients();  // Update ingredients when bread type changes
+    });
+
+    // Function to update ingredients list based on the selected bread type and dough weight
+    function updateIngredients() {
         let breadTypeIndex = $('#breadType').val();
         let doughWeight = parseInt($('#doughWeight').val());
 
@@ -76,5 +83,5 @@ $(document).ready(function() {
                 </li>`
             );
         }
-    });
+    }
 });
