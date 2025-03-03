@@ -21,9 +21,30 @@ $(document).ready(function() {
     }
 
     // Function to update the displayed dough weight
+    function updateWeight(value) {
+        let weightInput = $('#doughWeight');
+        let newWeight = parseInt(weightInput.val()) + value;
+        if (newWeight >= 500 && newWeight <= 5000) {
+            weightInput.val(newWeight);
+            $('#doughWeightValue').text(newWeight + ' g');
+            updateIngredients();
+        }
+    }
+
+    $('#increaseWeight').click(function() {
+        updateWeight(100);
+    });
+
+    $('#decreaseWeight').click(function() {
+        updateWeight(-100);
+    });
+
     $('#doughWeight').on('input', function() {
-        $('#doughWeightValue').text($(this).val() + ' g');
-        updateIngredients();  // Update ingredients when dough weight changes
+        let weight = parseInt($(this).val());
+        if (weight >= 500 && weight <= 5000) {
+            $('#doughWeightValue').text(weight + ' g');
+            updateIngredients();
+        }
     });
 
     // Function to update ingredients when bread type or dough weight changes
