@@ -93,7 +93,7 @@ function updateTimeSchedule(bread) {
         let startStr = formatShortDate(startTijd);
         let eindStr = formatShortDate(eindTijd);
 
-        schemaHTML += `<li>${naam}: ${startStr}`}</li>`;
+        schemaHTML += `<li>${naam}: ${startStr}</li>`;
     });
 
     document.getElementById("timeSchedule").innerHTML = schemaHTML + "</ul>";
