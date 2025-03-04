@@ -30,9 +30,9 @@ function updateInterface() {
 
     let doughWeight = parseInt(document.getElementById("doughWeight").value);
     
-    let totalWeight = Object.keys(bread)
+    let totalWeight = Object.keys(selectedBread)
         .filter(key => key !== "Type" && key !== "Bakinstructies" && key !== "Tijden")
-        .reduce((sum, key) => sum + bread[key], 0);
+        .reduce((sum, key) => sum + selectedBread[key], 0);
 
     let scalingFactor = doughWeight / totalWeight;
     
