@@ -16,7 +16,7 @@ function populateDropdowns() {
     const breadDropdown = document.getElementById("breadType");
     const weightDropdown = document.getElementById("doughWeight");
     
-    breadDropdown.innerHTML = breadData.map(b => `<option value="${b.Type}">${b.Type}</option>`).join("");
+    breadDropdown.innerHTML = breadData.Broden.map(b => `<option value="${b.Type}">${b.Type}</option>`).join("");
     
     weightDropdown.innerHTML = "";
     for (let i = 500; i <= 4500; i += 100) {
@@ -25,10 +25,10 @@ function populateDropdowns() {
 }
 
 function updateInterface() {
-    const selectedBread = breadData.find(b => b.Type === document.getElementById("breadType").value);
+    const selectedBread = breadData.Broden.find(b => b.Type === document.getElementById("breadType").value);
     if (!selectedBread) return;
 
-    document.getElementById("bakingInstructions").innerText = selectedBread.Bakinstructies;
+    document.getElementById("bakingInstructions").innerHTML = selectedBread.Bakinstructies;
     updateIngredients(selectedBread);
     updateFeeding(selectedBread);
     updateTimeSchedule(selectedBread);
