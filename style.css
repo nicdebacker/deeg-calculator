@@ -51,13 +51,24 @@ li {
     font-weight: bold;
 }
 
-#klaarTijd {
-    width: 100%;
-    max-width: 250px; /* Pas dit aan naar een gewenste breedte */
-    font-size: 16px;
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+/* Stijlen voor de container van de datepicker en voed-dropdown */
+.datetime-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
 }
+
+/* Zorgt ervoor dat beide inputs dezelfde grootte en stijl hebben */
+#klaarTijd, #feedCount {
+    flex: 1;
+    padding: 10px;
+    font-size: 1.2em;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    text-align: center;
+}
+
 
 
