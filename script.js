@@ -28,13 +28,6 @@ function updateInterface() {
     const selectedBread = breadData.Broden.find(b => b.Type === document.getElementById("breadType").value);
     if (!selectedBread) return;
 
-    document.getElementById("bakingInstructions").innerHTML = selectedBread.Bakinstructies;
-    updateIngredients(selectedBread);
-    updateFeeding(selectedBread);
-    updateTimeSchedule(selectedBread);
-}
-
-function updateIngredients(bread) {
     let doughWeight = parseInt(document.getElementById("doughWeight").value);
     
     let totalWeight = Object.keys(bread)
@@ -42,7 +35,14 @@ function updateIngredients(bread) {
         .reduce((sum, key) => sum + bread[key], 0);
 
     let scalingFactor = doughWeight / totalWeight;
+    
+    document.getElementById("bakingInstructions").innerHTML = selectedBread.Bakinstructies;
+    updateIngredients(selectedBread, scalingFactor);
+    updateFeeding(selectedBread, scalingFactor);
+    updateTimeSchedule(selectedBread);
+}
 
+function updateIngredients(bread, scalingFactor) {
     let ingredientsList = document.getElementById("ingredientsList");
     ingredientsList.innerHTML = Object.entries(bread)
         .filter(([key, value]) => !isNaN(value) && value > 0 && key !== "Type" && key !== "Bakinstructies" && key !== "Tijden")
@@ -53,9 +53,9 @@ function updateIngredients(bread) {
         .join("");
 }
 
-function updateFeeding(bread) {
+function updateFeeding(bread, scalingFactor) {
     let feedList = document.getElementById("feedList");
-    let starterAmount = bread.Starter;
+    let starterAmount = bread.Starter * scalingFactor;
     let voedFactor = breadData.Settings.VoedFactor;
     let feed1 = starterAmount / voedFactor;
     let feed2 = feed1 / voedFactor;
