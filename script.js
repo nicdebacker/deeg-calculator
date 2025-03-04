@@ -89,7 +89,11 @@ function updateTimeSchedule(bread) {
     stappen.forEach(([naam, min, max]) => {
         minTijd.setHours(minTijd.getHours() - min);
         maxTijd.setHours(maxTijd.getHours() - max);
-        schemaHTML += `<li>${naam}: ${formatShortDate(minTijd)} - ${formatShortDate(maxTijd)}</li>`;
+        
+        let minStr = formatShortDate(minTijd);
+        let maxStr = formatShortDate(maxTijd);
+
+        schemaHTML += `<li>${naam}: ${minStr === maxStr ? minStr : `${maxStr} - ${minStr}`}</li>`;
     });
 
     document.getElementById("timeSchedule").innerHTML = schemaHTML + "</ul>";
