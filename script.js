@@ -32,8 +32,7 @@ function setInitialDate() {
     
     if (selectedBread) {
         let eindTijd = new Date();
-        eindTijd.setHours(10, 0, 0, 0); // Standaard eetmoment om 10:00
-        
+    
         let etensTijd = calculateEndTime(eindTijd, selectedBread.Tijden, feedCount);
         document.getElementById("klaarTijd").value = etensTijd.toISOString().slice(0, 16);
         updateInterface();
@@ -44,7 +43,7 @@ function calculateEndTime(eindTijd, tijden, feedCount) {
     let currentTijd = new Date(eindTijd);
     let totaalTijd = tijden.rusten + tijden.bakken + tijden.rijzen + (tijden.voeden * feedCount);
     
-    currentTijd.setHours(currentTijd.getHours() - totaalTijd);
+    currentTijd.setHours(currentTijd.getHours() + totaalTijd);
     
     while (checkForbiddenHours(currentTijd, tijden, feedCount)) {
         currentTijd.setHours(currentTijd.getHours() + 1);
@@ -72,7 +71,7 @@ function checkForbiddenHours(eindTijd, tijden, feedCount) {
     for (let stap of stappen) {
         testTijd.setHours(testTijd.getHours() - stap.duur);
         
-        if ((testTijd.getHours() < 7 || testTijd.getHours() >= 23) && stap.naam !== "2x Voeden" && stap.naam !== "3x Voeden") {
+        if (testTijd.getHours() < 7 || testTijd.getHours() >= 23) {
             return true;
         }
     }
