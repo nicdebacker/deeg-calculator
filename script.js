@@ -71,7 +71,7 @@ function checkForbiddenHours(eindTijd, tijden, feedCount) {
     for (let stap of stappen) {
         testTijd.setHours(testTijd.getHours() - stap.duur);
         
-        if (testTijd.getHours() < 7 || testTijd.getHours() >= 23) {
+        if (testTijd.getHours() <= 7 || testTijd.getHours() >= 23) {
             return true;
         }
     }
