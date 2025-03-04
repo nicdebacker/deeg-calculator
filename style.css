@@ -51,3 +51,13 @@ li {
     font-weight: bold;
 }
 
+#klaarTijd {
+    width: 100%;
+    max-width: 250px; /* Pas dit aan naar een gewenste breedte */
+    font-size: 16px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+
