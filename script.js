@@ -88,7 +88,7 @@ function updateTimeSchedule(bread) {
 
     stappen.forEach(([naam, uren]) => {
         eindTijd = startTijd;
-        startTijd.setHours(eindTijd.getHours() - uren);
+        startTijd.setHours(startTijd.getHours() - uren);
         
         let startStr = formatShortDate(startTijd);
         let eindStr = formatShortDate(eindTijd);
