@@ -1,47 +1,44 @@
-/* Use a non-serif font */
 body {
     font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    padding: 20px;
 }
 
-/* Remove bullet points and add custom styles for list items */
-.list-group {
-    padding-left: 0;
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-.list-group-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 15px;
+h1, h3 {
+    text-align: center;
 }
 
-/* Align amount first, then ingredient name */
-.list-group-item .ingredient-amount {
-    font-weight: normal;
-    text-align: right;
-    min-width: 70px;
-    padding-right: 15px;
-}
-
-.list-group-item .ingredient-name {
+label {
     font-weight: bold;
-    flex-grow: 1;
+    display: block;
+    margin-top: 10px;
 }
 
-/* Add margin to the top of the h3 and less space below */
-h3 {
-    margin-top: 20px;  /* Adds more space above the header */
-    margin-bottom: 10px;  /* Reduces space below the header */
+select, input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-/* Adjusting the input fields to make them larger and adding space around */
-#breadType, #doughWeight {
-    padding: 12px 20px; /* Increase padding for larger input fields */
-    font-size: 16px;  /* Increase font size */
-    width: 100%;  /* Make inputs span full width of their container */
+ul {
+    list-style: none;
+    padding: 0;
 }
 
-.mb-3 {
-    margin-bottom: 30px;  /* Adds more space between the input fields and other content */
+ul li {
+    background: #e9ecef;
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 5px;
 }
-
