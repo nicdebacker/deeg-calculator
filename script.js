@@ -40,22 +40,44 @@ function setInitialDate() {
 
 function calculateStartTime(eetMoment, tijden) {
     let currentTijd = new Date(eetMoment);
+    let totaalTijd = tijden.rusten + tijden.bakken + tijden.rijzen + (tijden.voeden * 3);
     
-    let stappen = [
-        tijden.rusten,
-        tijden.bakken,
-        tijden.rijzen,
-        tijden.voeden * 3
-    ];
+    currentTijd.setHours(currentTijd.getHours() - totaalTijd);
     
-    stappen.forEach(uur => {
-        do {
-            currentTijd.setHours(currentTijd.getHours() - uur);
-        } while (currentTijd.getHours() < 7 || currentTijd.getHours() >= 23);
-    });
+    if (currentTijd < new Date()) {
+        currentTijd.setHours(currentTijd.getHours() + 24);
+    }
+    
+    while (checkForbiddenHours(currentTijd, tijden)) {
+        currentTijd.setHours(currentTijd.getHours() + 1);
+    }
     
     return currentTijd;
 }
+
+function checkForbiddenHours(startTijd, tijden) {
+    let testTijd = new Date(startTijd);
+    let stappen = [
+        { naam: "rusten", duur: tijden.rusten },
+        { naam: "bakken", duur: tijden.bakken },
+        { naam: "rijzen", duur: tijden.rijzen },
+        { naam: "1x Voeden", duur: tijden.voeden },
+        { naam: "2x Voeden", duur: tijden.voeden },
+        { naam: "3x Voeden", duur: tijden.voeden }
+    ];
+    
+    for (let stap of stappen) {
+        let eindTijd = new Date(testTijd);
+        eindTijd.setHours(eindTijd.getHours() + stap.duur);
+        
+        if ((testTijd.getHours() < 7 || testTijd.getHours() >= 23) && stap.naam !== "2x Voeden" && stap.naam !== "3x Voeden") {
+            return true;
+        }
+        testTijd = eindTijd;
+    }
+    return false;
+}
+
 
 function updateInterface() {
     const selectedBread = breadData.Broden.find(b => b.Type === document.getElementById("breadType").value);
