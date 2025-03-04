@@ -72,28 +72,25 @@ function updateTimeSchedule(bread) {
     let klaarTijd = new Date(document.getElementById("klaarTijd").value);
     if (isNaN(klaarTijd)) return;
 
-    let tijden = bread.Tijden;
-    let stappen = [
-        ["Eten", { min: 0, max: 0 }],
-        ["Rusten", tijden.rusten],
-        ["Bakken", tijden.bakken],
-        ["Rijzen", tijden.rijzen],
-        ["1x Voeden", tijden.voeden],
-        ["2x Voeden", tijden.voeden],
-        ["3x Voeden", tijden.voeden}]
-    ];
-
     let minTijd = new Date(klaarTijd);
     let maxTijd = new Date(klaarTijd);
-    
     let schemaHTML = "<ul>";
 
-    for (let i = 0; i < stappen.length; i++) {
-        minTijd.setHours(minTijd.getHours() - stappen[i][1].min);
-        maxTijd.setHours(maxTijd.getHours() - stappen[i][1].max);
+    const stappen = [
+        ["Eten", 0, 0],
+        ["Rusten", bread.Tijden.rusten.min, bread.Tijden.rusten.max],
+        ["Bakken", bread.Tijden.bakken.min, bread.Tijden.bakken.max],
+        ["Rijzen", bread.Tijden.rijzen.min, bread.Tijden.rijzen.max],
+        ["1x Voeden", bread.Tijden.voeden.min, bread.Tijden.voeden.max],
+        ["2x Voeden", bread.Tijden.voeden.min, bread.Tijden.voeden.max],
+        ["3x Voeden", bread.Tijden.voeden.min, bread.Tijden.voeden.max]
+    ];
 
-        schemaHTML += `<li>${stappen[i][0]}: ${formatShortDate(maxTijd)} - ${formatShortDate(minTijd)}</li>`;
-    }
+    stappen.forEach(([naam, min, max]) => {
+        minTijd.setHours(minTijd.getHours() - min);
+        maxTijd.setHours(maxTijd.getHours() - max);
+        schemaHTML += `<li>${naam}: ${formatShortDate(maxTijd)} - ${formatShortDate(minTijd)}</li>`;
+    });
 
     document.getElementById("timeSchedule").innerHTML = schemaHTML + "</ul>";
 }
