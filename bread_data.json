@@ -15,7 +15,7 @@
                 "rijzen": { "min": 6, "max": 12 },
                 "bollen": { "min": 1, "max": 1 },
                 "bakken": { "min": 1, "max": 1 },
-                "rusten": { "min": 1, "max": 2 }
+                "rusten": { "min": 1, "max": 1 }
             }
         },
         {
@@ -33,7 +33,7 @@
                 "rijzen": { "min": 6, "max": 12 },
                 "bollen": { "min": 1, "max": 1 },
                 "bakken": { "min": 1, "max": 1 },
-                "rusten": { "min": 1, "max": 2 }
+                "rusten": { "min": 1, "max": 1 }
             }
         },
         {
@@ -51,7 +51,7 @@
                 "rijzen": { "min": 6, "max": 12 },
                 "bollen": { "min": 1, "max": 1 },
                 "bakken": { "min": 1, "max": 1 },
-                "rusten": { "min": 1, "max": 2 }
+                "rusten": { "min": 1, "max": 1 }
             }
         },
         {
@@ -69,7 +69,7 @@
                 "rijzen": { "min": 6, "max": 12 },
                 "bollen": { "min": 1, "max": 1 },
                 "bakken": { "min": 1, "max": 1 },
-                "rusten": { "min": 1, "max": 2 }
+                "rusten": { "min": 1, "max": 1 }
             }
         },
         {
@@ -87,7 +87,7 @@
                 "rijzen": { "min": 6, "max": 12 },
                 "bollen": { "min": 1, "max": 1 },
                 "bakken": { "min": 1, "max": 1 },
-                "rusten": { "min": 1, "max": 2 }
+                "rusten": { "min": 1, "max": 1 }
             }
         },
         {
@@ -105,7 +105,7 @@
                 "rijzen": { "min": 6, "max": 12 },
                 "bollen": { "min": 1, "max": 2 },
                 "bakken": { "min": 1, "max": 1 },
-                "rusten": { "min": 1, "max": 2 }
+                "rusten": { "min": 1, "max": 1 }
             }
         },
         {
@@ -123,7 +123,7 @@
                 "rijzen": { "min": 6, "max": 12 },
                 "bollen": { "min": 1, "max": 2 },
                 "bakken": { "min": 1, "max": 1 },
-                "rusten": { "min": 1, "max": 2 }
+                "rusten": { "min": 1, "max": 1 }
             }
         }
     ],
