@@ -7,9 +7,10 @@ document.addEventListener("DOMContentLoaded", function() {
             setInitialDate();
         });
 
-    document.getElementById("breadType").addEventListener("change", updateInterface);
+    document.getElementById("breadType").addEventListener("change", setInitialDate);
     document.getElementById("doughWeight").addEventListener("change", updateInterface);
     document.getElementById("klaarTijd").addEventListener("change", updateInterface);
+    document.getElementById("feedCount").addEventListener("change", setInitialDate);
 });
 
 function populateDropdowns() {
@@ -27,35 +28,26 @@ function populateDropdowns() {
 function setInitialDate() {
     const breadDropdown = document.getElementById("breadType");
     const selectedBread = window.breadData.Broden.find(b => b.Type === breadDropdown.value) || window.breadData.Broden[0];
+    const feedCount = parseInt(document.getElementById("feedCount").value);
     
     if (selectedBread) {
         let eindTijd = new Date();
         eindTijd.setHours(10, 0, 0, 0); // Standaard eetmoment om 10:00
         
-        let etensTijd = calculateEndTime(eindTijd, selectedBread.Tijden);
+        let etensTijd = calculateEndTime(eindTijd, selectedBread.Tijden, feedCount);
         document.getElementById("klaarTijd").value = etensTijd.toISOString().slice(0, 16);
         updateInterface();
     }
 }
 
-function calculateEndTime(eindTijd, tijden) {
+function calculateEndTime(eindTijd, tijden, feedCount) {
     let currentTijd = new Date(eindTijd);
+    let totaalTijd = tijden.rusten + tijden.bakken + tijden.rijzen + (tijden.voeden * feedCount);
     
-    let stappen = [
-        { naam: "rusten", duur: tijden.rusten },
-        { naam: "bakken", duur: tijden.bakken },
-        { naam: "rijzen", duur: tijden.rijzen },
-        { naam: "1x Voeden", duur: tijden.voeden },
-        { naam: "2x Voeden", duur: tijden.voeden },
-        { naam: "3x Voeden", duur: tijden.voeden }
-    ];
+    currentTijd.setHours(currentTijd.getHours() - totaalTijd);
     
-    for (let stap of stappen) {
-        currentTijd.setHours(currentTijd.getHours() - stap.duur);
-        
-        while ((currentTijd.getHours() < 7 || currentTijd.getHours() >= 23) && stap.naam !== "2x Voeden" && stap.naam !== "3x Voeden") {
-            currentTijd.setHours(currentTijd.getHours() + 1);
-        }
+    while (checkForbiddenHours(currentTijd, tijden, feedCount)) {
+        currentTijd.setHours(currentTijd.getHours() + 1);
     }
     
     while (currentTijd < new Date()) {
@@ -63,6 +55,28 @@ function calculateEndTime(eindTijd, tijden) {
     }
     
     return currentTijd;
+}
+
+function checkForbiddenHours(eindTijd, tijden, feedCount) {
+    let testTijd = new Date(eindTijd);
+    let stappen = [
+        { naam: "rusten", duur: tijden.rusten },
+        { naam: "bakken", duur: tijden.bakken },
+        { naam: "rijzen", duur: tijden.rijzen }
+    ];
+    
+    for (let i = 1; i <= feedCount; i++) {
+        stappen.push({ naam: `${i}x Voeden`, duur: tijden.voeden });
+    }
+    
+    for (let stap of stappen) {
+        testTijd.setHours(testTijd.getHours() - stap.duur);
+        
+        if ((testTijd.getHours() < 7 || testTijd.getHours() >= 23) && stap.naam !== "2x Voeden" && stap.naam !== "3x Voeden") {
+            return true;
+        }
+    }
+    return false;
 }
 
 function updateInterface() {
