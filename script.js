@@ -72,28 +72,28 @@ function updateTimeSchedule(bread) {
     let klaarTijd = new Date(document.getElementById("klaarTijd").value);
     if (isNaN(klaarTijd)) return;
 
-    let minTijd = new Date(klaarTijd);
-    let maxTijd = new Date(klaarTijd);
+    let eindTijd = new Date(klaarTijd);
+    let startTijd = new Date(klaarTijd);
     let schemaHTML = "<ul>";
 
     const stappen = [
-        ["Eten", 0, 0],
-        ["Rusten", bread.Tijden.rusten.min, bread.Tijden.rusten.max],
-        ["Bakken", bread.Tijden.bakken.min, bread.Tijden.bakken.max],
-        ["Rijzen", bread.Tijden.rijzen.min, bread.Tijden.rijzen.max],
-        ["1x Voeden", bread.Tijden.voeden.min, bread.Tijden.voeden.max],
-        ["2x Voeden", bread.Tijden.voeden.min, bread.Tijden.voeden.max],
-        ["3x Voeden", bread.Tijden.voeden.min, bread.Tijden.voeden.max]
+        ["Eten", 0],
+        ["Rusten", bread.Tijden.rusten],
+        ["Bakken", bread.Tijden.bakken],
+        ["Rijzen", bread.Tijden.rijzen],
+        ["1x Voeden", bread.Tijden.voeden],
+        ["2x Voeden", bread.Tijden.voeden],
+        ["3x Voeden", bread.Tijden.voeden]
     ];
 
-    stappen.forEach(([naam, min, max]) => {
-        minTijd.setHours(minTijd.getHours() - min);
-        maxTijd.setHours(maxTijd.getHours() - max);
+    stappen.forEach(([naam, uren]) => {
+        eindTijd = startTijd;
+        startTijd.setHours(maxTijd.getHours() - uren);
         
-        let minStr = formatShortDate(minTijd);
-        let maxStr = formatShortDate(maxTijd);
+        let startStr = formatShortDate(startTijd);
+        let eindStr = formatShortDate(eindTijd);
 
-        schemaHTML += `<li>${naam}: ${minStr === maxStr ? minStr : `${maxStr} - ${minStr}`}</li>`;
+        schemaHTML += `<li>${naam}: ${startStr === eindStr ? startStr : `${startStr} - ${eindStr}`}</li>`;
     });
 
     document.getElementById("timeSchedule").innerHTML = schemaHTML + "</ul>";
