@@ -23,7 +23,15 @@
         <p id="bakingInstructions"></p>
 
         <h3>Schema</h3>
-        <input type="datetime-local" id="klaarTijd">
+        <div class="datetime-container">
+            <input type="datetime-local" id="klaarTijd">
+            <select id="feedCount">
+                <option value="1">1x Voeden</option>
+                <option value="2" selected>2x Voeden</option>
+                <option value="3">3x Voeden</option>
+                <option value="4">4x Voeden</option>
+            </select>
+        </div>
         <div id="timeSchedule"></div>
     </div>
 
