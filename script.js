@@ -4,10 +4,10 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(data => {
             window.breadData = data;
             populateDropdowns();
-            updateInterface();
+            setInitialDate();
         });
 
-    document.getElementById("breadType").addEventListener("change", updateInterface);
+    document.getElementById("breadType").addEventListener("change", setInitialDate);
     document.getElementById("doughWeight").addEventListener("change", updateInterface);
     document.getElementById("klaarTijd").addEventListener("change", updateInterface);
 });
@@ -22,6 +22,39 @@ function populateDropdowns() {
     for (let i = 500; i <= 4500; i += 100) {
         weightDropdown.innerHTML += `<option value="${i}" ${i === 2500 ? "selected" : ""}>${i} g</option>`;
     }
+}
+
+function setInitialDate() {
+    const breadDropdown = document.getElementById("breadType");
+    const selectedBread = window.breadData.Broden.find(b => b.Type === breadDropdown.value) || window.breadData.Broden[0];
+    
+    if (selectedBread) {
+        let eetMoment = new Date();
+        eetMoment.setHours(10, 0, 0, 0); // Standaard eetmoment om 10:00
+        
+        let startTijd = calculateStartTime(eetMoment, selectedBread.Tijden);
+        document.getElementById("klaarTijd").value = startTijd.toISOString().slice(0, 16);
+        updateInterface();
+    }
+}
+
+function calculateStartTime(eetMoment, tijden) {
+    let currentTijd = new Date(eetMoment);
+    
+    let stappen = [
+        tijden.rusten,
+        tijden.bakken,
+        tijden.rijzen,
+        tijden.voeden * 3
+    ];
+    
+    stappen.forEach(uur => {
+        do {
+            currentTijd.setHours(currentTijd.getHours() - uur);
+        } while (currentTijd.getHours() < 7 || currentTijd.getHours() >= 23);
+    });
+    
+    return currentTijd;
 }
 
 function updateInterface() {
