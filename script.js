@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
             setInitialDate();
         });
 
-    document.getElementById("breadType").addEventListener("change", setInitialDate);
+    document.getElementById("breadType").addEventListener("change", updateInterface);
     document.getElementById("doughWeight").addEventListener("change", updateInterface);
     document.getElementById("klaarTijd").addEventListener("change", updateInterface);
 });
