@@ -73,27 +73,30 @@ function updateTimeSchedule(bread) {
     if (isNaN(klaarTijd)) return;
     
     let tijden = bread.Tijden;
-    let steps = [
+    let stappen = [
+        ["Eten", { min: 0, max: 0 }],
         ["Rusten", tijden.rusten],
         ["Bakken", tijden.bakken],
         ["Rijzen", tijden.rijzen],
-        ["Bollen", tijden.bollen],
-        ["Voeden", tijden.voeden]
+        ["1x Voeden", tijden.voeden],
+        ["2x Voeden", { min: tijden.voeden.min * 2, max: tijden.voeden.max * 2 }],
+        ["3x Voeden", { min: tijden.voeden.min * 3, max: tijden.voeden.max * 3 }]
     ];
     
     let schemaHTML = "<ul>";
-    for (let i = steps.length - 1; i >= 0; i--) {
+    for (let i = 0; i < stappen.length; i++) {
         let minTijd = new Date(klaarTijd);
         let maxTijd = new Date(klaarTijd);
         
-        minTijd.setHours(minTijd.getHours() - steps[i][1].max);
-        maxTijd.setHours(maxTijd.getHours() - steps[i][1].min);
+        minTijd.setHours(minTijd.getHours() - stappen[i][1].max);
+        maxTijd.setHours(maxTijd.getHours() - stappen[i][1].min);
         
-        schemaHTML += `<li>${steps[i][0]}: ${formatDate(minTijd)} - ${formatDate(maxTijd)}</li>`;
+        schemaHTML += `<li>${stappen[i][0]}: ${formatDate(minTijd)} - ${formatDate(maxTijd)}</li>`;
         klaarTijd = minTijd;
     }
     document.getElementById("timeSchedule").innerHTML = schemaHTML + "</ul>";
 }
+
 
 function formatDate(date) {
     return date.toLocaleDateString("nl-BE", { weekday: 'long', hour: '2-digit', minute: '2-digit' });
