@@ -129,24 +129,26 @@ function updateTimeSchedule(bread) {
     let eindTijd = new Date(klaarTijd);
     let startTijd = new Date(klaarTijd);
     let schemaHTML = "<ul>";
+    
+    const feedCount = parseInt(document.getElementById("feedCount").value);
 
     const stappen = [
         ["Eten", 0],
         ["Wachten", bread.Tijden.rusten],
         ["Bakken", bread.Tijden.bakken],
-        ["Kneden en rijzen", bread.Tijden.rijzen],
-        ["1x Voeden", bread.Tijden.voeden],
-        ["2x Voeden", bread.Tijden.voeden],
-        ["3x Voeden", bread.Tijden.voeden]
+        ["Kneden en rijzen", bread.Tijden.rijzen]
     ];
+
+    for (let i = feedCount; i >= 1; i--) {
+        stappen.push([`${i}x Voeden`, bread.Tijden.voeden]);
+    }
 
     stappen.forEach(([naam, uren]) => {
         eindTijd = startTijd;
         startTijd.setHours(startTijd.getHours() - uren);
         
         let startStr = formatShortDate(startTijd);
-        let eindStr = formatShortDate(eindTijd);
-
+        
         schemaHTML += `<li>${naam}: ${startStr}</li>`;
     });
 
