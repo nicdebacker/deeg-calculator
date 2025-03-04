@@ -79,8 +79,8 @@ function updateTimeSchedule(bread) {
         ["Bakken", tijden.bakken],
         ["Rijzen", tijden.rijzen],
         ["1x Voeden", tijden.voeden],
-        ["2x Voeden", { min: tijden.voeden.min * 2, max: tijden.voeden.max * 2 }],
-        ["3x Voeden", { min: tijden.voeden.min * 3, max: tijden.voeden.max * 3 }]
+        ["2x Voeden", tijden.voeden],
+        ["3x Voeden", tijden.voeden}]
     ];
 
     let minTijd = new Date(klaarTijd);
