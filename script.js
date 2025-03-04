@@ -29,34 +29,18 @@ function setInitialDate() {
     const selectedBread = window.breadData.Broden.find(b => b.Type === breadDropdown.value) || window.breadData.Broden[0];
     
     if (selectedBread) {
-        let eetMoment = new Date();
-        eetMoment.setHours(10, 0, 0, 0); // Standaard eetmoment om 10:00
+        let eindTijd = new Date();
+        eindTijd.setHours(10, 0, 0, 0); // Standaard eetmoment om 10:00
         
-        let startTijd = calculateStartTime(eetMoment, selectedBread.Tijden);
-        document.getElementById("klaarTijd").value = startTijd.toISOString().slice(0, 16);
+        let etensTijd = calculateEndTime(eindTijd, selectedBread.Tijden);
+        document.getElementById("klaarTijd").value = etensTijd.toISOString().slice(0, 16);
         updateInterface();
     }
 }
 
-function calculateStartTime(eetMoment, tijden) {
-    let currentTijd = new Date(eetMoment);
-    let totaalTijd = tijden.rusten + tijden.bakken + tijden.rijzen + (tijden.voeden * 3);
+function calculateEndTime(eindTijd, tijden) {
+    let currentTijd = new Date(eindTijd);
     
-    currentTijd.setHours(currentTijd.getHours() - totaalTijd);
-    
-    if (currentTijd < new Date()) {
-        currentTijd.setHours(currentTijd.getHours() + 24);
-    }
-    
-    while (checkForbiddenHours(currentTijd, tijden)) {
-        currentTijd.setHours(currentTijd.getHours() + 1);
-    }
-    
-    return currentTijd;
-}
-
-function checkForbiddenHours(startTijd, tijden) {
-    let testTijd = new Date(startTijd);
     let stappen = [
         { naam: "rusten", duur: tijden.rusten },
         { naam: "bakken", duur: tijden.bakken },
@@ -67,17 +51,19 @@ function checkForbiddenHours(startTijd, tijden) {
     ];
     
     for (let stap of stappen) {
-        let eindTijd = new Date(testTijd);
-        eindTijd.setHours(eindTijd.getHours() + stap.duur);
+        currentTijd.setHours(currentTijd.getHours() - stap.duur);
         
-        if ((testTijd.getHours() < 7 || testTijd.getHours() >= 23) && stap.naam !== "2x Voeden" && stap.naam !== "3x Voeden") {
-            return true;
+        while ((currentTijd.getHours() < 7 || currentTijd.getHours() >= 23) && stap.naam !== "2x Voeden" && stap.naam !== "3x Voeden") {
+            currentTijd.setHours(currentTijd.getHours() + 1);
         }
-        testTijd = eindTijd;
     }
-    return false;
+    
+    while (currentTijd < new Date()) {
+        currentTijd.setHours(currentTijd.getHours() + 24);
+    }
+    
+    return currentTijd;
 }
-
 
 function updateInterface() {
     const selectedBread = breadData.Broden.find(b => b.Type === document.getElementById("breadType").value);
