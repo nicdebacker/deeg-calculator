@@ -11,11 +11,11 @@
             "Weekwater": 0,
             "Bakinstructies": "<b>Brood: </b>Zet de pot in de oven en verwarm op 250°C. Bak brood voor 25 minuten. Neem het deksel eraf en bak nog 25 minuten op 225°C.<br /><br /><b>Ciabatta: </b>Bak 20 minuten op 240°C en nog 10 minuten zonder deksel op 225°C.",
             "Tijden": {
-                "voeden": { "min": 4, "max": 6 },
-                "rijzen": { "min": 6, "max": 12 },
-                "bollen": { "min": 1, "max": 1 },
-                "bakken": { "min": 1, "max": 1 },
-                "rusten": { "min": 1, "max": 1 }
+                "voeden": 4,
+                "rijzen": 12,
+                "bollen": 1,
+                "bakken": 1,
+                "rusten": 1
             }
         },
         {
@@ -29,11 +29,11 @@
             "Weekwater": 0,
             "Bakinstructies": "<b>Brood: </b>Zet de pot in de oven en verwarm op 250°C. Bak brood voor 25 minuten. Neem het deksel eraf en bak nog 25 minuten op 225°C.<br /><br /><b>Ciabatta: </b>Bak 20 minuten op 240°C en nog 10 minuten zonder deksel op 225°C.",
             "Tijden": {
-                "voeden": { "min": 4, "max": 6 },
-                "rijzen": { "min": 6, "max": 12 },
-                "bollen": { "min": 1, "max": 1 },
-                "bakken": { "min": 1, "max": 1 },
-                "rusten": { "min": 1, "max": 1 }
+                "voeden": 4,
+                "rijzen": 12,
+                "bollen": 1,
+                "bakken": 1,
+                "rusten": 1
             }
         },
         {
@@ -47,11 +47,11 @@
             "Weekwater": 0,
             "Bakinstructies": "<b>Brood: </b>Zet de pot in de oven en verwarm op 250°C. Bak brood voor 25 minuten. Neem het deksel eraf en bak nog 25 minuten op 225°C.<br /><br /><b>Ciabatta: </b>Bak 20 minuten op 240°C en nog 10 minuten zonder deksel op 225°C.",
             "Tijden": {
-                "voeden": { "min": 4, "max": 6 },
-                "rijzen": { "min": 6, "max": 12 },
-                "bollen": { "min": 1, "max": 1 },
-                "bakken": { "min": 1, "max": 1 },
-                "rusten": { "min": 1, "max": 1 }
+                "voeden": 4,
+                "rijzen": 12,
+                "bollen": 1,
+                "bakken": 1,
+                "rusten": 1
             }
         },
         {
@@ -65,11 +65,11 @@
             "Weekwater": 0,
             "Bakinstructies": "<b>Brood: </b>Zet de pot in de oven en verwarm op 250°C. Bak brood voor 25 minuten. Neem het deksel eraf en bak nog 25 minuten op 225°C.<br /><br /><b>Ciabatta: </b>Bak 20 minuten op 240°C en nog 10 minuten zonder deksel op 225°C.",
             "Tijden": {
-                "voeden": { "min": 4, "max": 6 },
-                "rijzen": { "min": 6, "max": 12 },
-                "bollen": { "min": 1, "max": 1 },
-                "bakken": { "min": 1, "max": 1 },
-                "rusten": { "min": 1, "max": 1 }
+                "voeden": 4,
+                "rijzen": 12,
+                "bollen": 1,
+                "bakken": 1,
+                "rusten": 1
             }
         },
         {
@@ -83,11 +83,11 @@
             "Weekwater": 0,
             "Bakinstructies": "<b>Brood: </b>Zet de pot in de oven en verwarm op 250°C. Bak brood voor 25 minuten. Neem het deksel eraf en bak nog 25 minuten op 225°C.<br /><br /><b>Ciabatta: </b>Bak 20 minuten op 240°C en nog 10 minuten zonder deksel op 225°C.",
             "Tijden": {
-                "voeden": { "min": 4, "max": 6 },
-                "rijzen": { "min": 6, "max": 12 },
-                "bollen": { "min": 1, "max": 1 },
-                "bakken": { "min": 1, "max": 1 },
-                "rusten": { "min": 1, "max": 1 }
+                "voeden": 4,
+                "rijzen": 12,
+                "bollen": 1,
+                "bakken": 1,
+                "rusten": 1
             }
         },
         {
@@ -101,11 +101,11 @@
             "Weekwater": 127,
             "Bakinstructies": "Bak 45 min op 225°C.",
             "Tijden": {
-                "voeden": { "min": 4, "max": 6 },
-                "rijzen": { "min": 6, "max": 12 },
-                "bollen": { "min": 1, "max": 2 },
-                "bakken": { "min": 1, "max": 1 },
-                "rusten": { "min": 1, "max": 1 }
+                "voeden": 3,
+                "rijzen": 3,
+                "bollen": 0,
+                "bakken": 1,
+                "rusten": 48
             }
         },
         {
@@ -119,11 +119,11 @@
             "Weekwater": 0,
             "Bakinstructies": "<b>Brood: </b>Zet de pot in de oven en verwarm op 250°C. Bak brood voor 25 minuten. Neem het deksel eraf en bak nog 25 minuten tegen 225°C.",
             "Tijden": {
-                "voeden": { "min": 4, "max": 6 },
-                "rijzen": { "min": 6, "max": 12 },
-                "bollen": { "min": 1, "max": 2 },
-                "bakken": { "min": 1, "max": 1 },
-                "rusten": { "min": 1, "max": 1 }
+                "voeden": 3,
+                "rijzen": 3,
+                "bollen": 1,
+                "bakken": 1,
+                "rusten": 24
             }
         }
     ],
