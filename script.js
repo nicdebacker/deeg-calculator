@@ -1,125 +1,66 @@
-$(document).ready(function() {
-    // Load bread data from the JSON file
-    let breadData;
-
-    $.getJSON('bread_data.json', function(data) {
-        breadData = data;
-        populateDropdown();  // Populate dropdown with bread types
-        updateIngredients();  // Update ingredients on initial load
-    });
-
-    // Function to populate the dropdown dynamically
-    function populateDropdown() {
-        let dropdown = $('#breadType');
-        dropdown.empty(); // Clear existing options
-
-        $.each(breadData, function(index, bread) {
-            dropdown.append($('<option></option>').attr('value', index).text(bread.Type));
+document.addEventListener("DOMContentLoaded", function() {
+    fetch("bread_data.json")
+        .then(response => response.json())
+        .then(data => {
+            window.breadData = data;
+            populateDropdowns();
+            updateInterface();
         });
 
-        dropdown.trigger('change'); // Trigger change to update ingredients
-    }
-
-    // Function to update the displayed dough weight
-    function updateWeight(value) {
-        let weightInput = $('#doughWeight');
-        let newWeight = parseInt(weightInput.val()) + value;
-        if (newWeight >= 500 && newWeight <= 5000) {
-            weightInput.val(newWeight);
-            $('#doughWeightValue').text(newWeight + ' g');
-            updateIngredients();
-        }
-    }
-
-    $('#increaseWeight').click(function() {
-        updateWeight(100);
-    });
-
-    $('#decreaseWeight').click(function() {
-        updateWeight(-100);
-    });
-
-    $('#doughWeight').on('input', function() {
-        let weight = parseInt($(this).val());
-        if (weight >= 500 && weight <= 5000) {
-            $('#doughWeightValue').text(weight + ' g');
-            updateIngredients();
-        }
-    });
-
-    // Function to update ingredients when bread type or dough weight changes
-    $('#breadType').change(function() {
-        updateIngredients();  // Update ingredients when bread type changes
-    });
-
-    // Function to update ingredients list based on the selected bread type and dough weight
-    function updateIngredients() {
-        let breadTypeIndex = $('#breadType').val();
-        let doughWeight = parseInt($('#doughWeight').val());
-
-        let bread = breadData[breadTypeIndex];
-
-        // Calculate the total weight of the bread ingredients (sum all columns except the first one)
-        let totalWeight = 0;
-        for (let key in bread) {
-            if (key !== "Type") {
-                totalWeight += bread[key];
-            }
-        }
-
-        // Calculate the scaling factor based on desired dough weight
-        let scalingFactor = doughWeight / totalWeight;
-
-        // Calculate the required ingredients based on the scaling factor
-        let ingredients = {};
-        for (let key in bread) {
-            if (key !== "Type") {
-                ingredients[key] = Math.round(bread[key] * scalingFactor);
-            }
-        }
-
-        // Display the calculated ingredients
-        let ingredientsList = $('#ingredientsList');
-        ingredientsList.empty(); // Clear previous results
-
-        for (let ingredient in ingredients) {
-            // Only show ingredients that have a value greater than 0g
-            if (ingredients[ingredient] > 0) {
-                ingredientsList.append(
-                    `<li class="list-group-item d-flex justify-content-between align-items-center">
-                        <span class="ingredient-amount">${ingredients[ingredient]} g</span>
-                        <span class="ingredient-name">${ingredient}</span>
-                    </li>`
-                );
-            }
-        }
-
-        // Calculate the feeding amount for the starter
-        let starterAmount = Math.round(bread.Starter * scalingFactor);
-        let feed1 = starterAmount / 2.5;
-        let feed2 = feed1 / 2.5;
-
-        // Create a new section for "Voeden"
-        let feedList = $('#feedList');
-        feedList.empty(); // Clear previous feed results
-
-        // Add feeding amounts to the list, only if greater than 0g
-        if (feed1 > 0) {
-            feedList.append(
-                `<li class="list-group-item d-flex justify-content-between align-items-center">
-                    <span class="ingredient-amount">${Math.round(feed1)} g</span>
-                    <span class="ingredient-name">1x Voeden</span>
-                </li>`
-            );
-        }
-
-        if (feed2 > 0) {
-            feedList.append(
-                `<li class="list-group-item d-flex justify-content-between align-items-center">
-                    <span class="ingredient-amount">${Math.round(feed2)} g</span>
-                    <span class="ingredient-name">2x Voeden</span>
-                </li>`
-            );
-        }
-    }
+    document.getElementById("breadType").addEventListener("change", updateInterface);
+    document.getElementById("doughWeight").addEventListener("change", updateInterface);
+    document.getElementById("klaarTijd").addEventListener("change", updateInterface);
 });
+
+function populateDropdowns() {
+    const breadDropdown = document.getElementById("breadType");
+    const weightDropdown = document.getElementById("doughWeight");
+    
+    breadDropdown.innerHTML = breadData.map(b => `<option value="${b.Type}">${b.Type}</option>`).join("");
+    
+    weightDropdown.innerHTML = "";
+    for (let i = 500; i <= 4500; i += 100) {
+        weightDropdown.innerHTML += `<option value="${i}" ${i === 2500 ? "selected" : ""}>${i} g</option>`;
+    }
+}
+
+function updateInterface() {
+    const selectedBread = breadData.find(b => b.Type === document.getElementById("breadType").value);
+    if (!selectedBread) return;
+
+    document.getElementById("bakingInstructions").innerText = selectedBread.Bakinstructies;
+    updateIngredients(selectedBread);
+    updateFeeding(selectedBread);
+    updateTimeSchedule(selectedBread);
+}
+
+function updateTimeSchedule(bread) {
+    let klaarTijd = new Date(document.getElementById("klaarTijd").value);
+    if (isNaN(klaarTijd)) return;
+    
+    let tijden = bread.Tijden;
+    let steps = [
+        ["Rusten", tijden.rusten],
+        ["Bakken", tijden.bakken],
+        ["Rijzen", tijden.rijzen],
+        ["Bollen", tijden.bollen],
+        ["Voeden", tijden.voeden]
+    ];
+    
+    let schemaHTML = "<ul>";
+    for (let i = steps.length - 1; i >= 0; i--) {
+        let minTijd = new Date(klaarTijd);
+        let maxTijd = new Date(klaarTijd);
+        
+        minTijd.setHours(minTijd.getHours() - steps[i][1].max);
+        maxTijd.setHours(maxTijd.getHours() - steps[i][1].min);
+        
+        schemaHTML += `<li>${steps[i][0]}: ${formatDate(minTijd)} - ${formatDate(maxTijd)}</li>`;
+        klaarTijd = minTijd;
+    }
+    document.getElementById("timeSchedule").innerHTML = schemaHTML + "</ul>";
+}
+
+function formatDate(date) {
+    return date.toLocaleDateString("nl-BE", { weekday: 'long', hour: '2-digit', minute: '2-digit' });
+}
