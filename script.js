@@ -34,6 +34,40 @@ function updateInterface() {
     updateTimeSchedule(selectedBread);
 }
 
+function updateIngredients(bread) {
+    let doughWeight = parseInt(document.getElementById("doughWeight").value);
+    
+    let totalWeight = Object.keys(bread)
+        .filter(key => key !== "Type" && key !== "Bakinstructies" && key !== "Tijden")
+        .reduce((sum, key) => sum + bread[key], 0);
+
+    let scalingFactor = doughWeight / totalWeight;
+
+    let ingredientsList = document.getElementById("ingredientsList");
+    ingredientsList.innerHTML = Object.entries(bread)
+        .filter(([key, value]) => !isNaN(value) && value > 0 && key !== "Type" && key !== "Bakinstructies" && key !== "Tijden")
+        .map(([key, value]) => {
+            let scaledValue = Math.round(value * scalingFactor);
+            return scaledValue > 0 ? `<li>${key}: ${scaledValue} g</li>` : "";
+        })
+        .join("");
+}
+
+function updateFeeding(bread) {
+    let feedList = document.getElementById("feedList");
+    let starterAmount = bread.Starter;
+    let voedFactor = breadData.Settings.VoedFactor;
+    let feed1 = starterAmount / voedFactor;
+    let feed2 = feed1 / voedFactor;
+    let feed3 = feed2 / voedFactor;
+    
+    feedList.innerHTML = `
+        <li>1x Voeden: ${Math.round(feed1)} g</li>
+        <li>2x Voeden: ${Math.round(feed2)} g</li>
+        <li>3x Voeden: ${Math.round(feed3)} g</li>
+    `;
+}
+
 function updateTimeSchedule(bread) {
     let klaarTijd = new Date(document.getElementById("klaarTijd").value);
     if (isNaN(klaarTijd)) return;
