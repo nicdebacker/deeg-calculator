@@ -78,9 +78,9 @@ function updateTimeSchedule(bread) {
 
     const stappen = [
         ["Eten", 0],
-        ["Rusten", bread.Tijden.rusten],
+        ["Wachten", bread.Tijden.rusten],
         ["Bakken", bread.Tijden.bakken],
-        ["Rijzen", bread.Tijden.rijzen],
+        ["Kneden en rijzen", bread.Tijden.rijzen],
         ["1x Voeden", bread.Tijden.voeden],
         ["2x Voeden", bread.Tijden.voeden],
         ["3x Voeden", bread.Tijden.voeden]
