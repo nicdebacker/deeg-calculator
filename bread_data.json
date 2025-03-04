@@ -9,7 +9,7 @@
             "Zout": 20,
             "Zaden": 0,
             "Weekwater": 0,
-            "Bakinstructies": "<b>Brood</b><br />Zet de pot in de oven en verwarm op 250°C. Bak brood voor 25 minuten. Neem het deksel eraf en bak nog 25 minuten op 225°C.<br /><br /><b>Ciabatta</b><br />Bak 20 minuten op 240°C en nog 10 minuten zonder deksel op 225°C.<br /><br /><b>Pistolets</b><br />Bak 20 minuten in stoomoven (stoom op lage stand) op 235°C.",
+            "Bakinstructies": "<ul><li>Brood: Zet de pot in de oven en verwarm op 250°C. Bak brood voor 25 minuten. Neem het deksel eraf en bak nog 25 minuten op 225°C.</li><li>Ciabatta: Bak 20 minuten op 240°C en nog 10 minuten zonder deksel op 225°C.</li><li>Pistolets: Bak 20 minuten in stoomoven (stoom op lage stand) op 235°C.</li></ul>",
             "Tijden": {
                 "voeden": 4,
                 "rijzen": 12,
@@ -27,7 +27,7 @@
             "Zout": 20,
             "Zaden": 0,
             "Weekwater": 0,
-            "Bakinstructies": "<b>Brood</b><br />Zet de pot in de oven en verwarm op 250°C. Bak brood voor 25 minuten. Neem het deksel eraf en bak nog 25 minuten op 225°C.<br /><br /><b>Ciabatta</b><br />Bak 20 minuten op 240°C en nog 10 minuten zonder deksel op 225°C.<br /><br /><b>Pistolets</b><br />Bak 20 minuten in stoomoven (stoom op lage stand) op 235°C.",
+            "Bakinstructies": "<ul><li>Brood: Zet de pot in de oven en verwarm op 250°C. Bak brood voor 25 minuten. Neem het deksel eraf en bak nog 25 minuten op 225°C.</li><li>Ciabatta: Bak 20 minuten op 240°C en nog 10 minuten zonder deksel op 225°C.</li><li>Pistolets: Bak 20 minuten in stoomoven (stoom op lage stand) op 235°C.</li></ul>",
             "Tijden": {
                 "voeden": 4,
                 "rijzen": 12,
@@ -45,7 +45,7 @@
             "Zout": 20,
             "Zaden": 0,
             "Weekwater": 0,
-            "Bakinstructies": "<b>Brood</b><br />Zet de pot in de oven en verwarm op 250°C. Bak brood voor 25 minuten. Neem het deksel eraf en bak nog 25 minuten op 225°C.<br /><br /><b>Ciabatta</b><br />Bak 20 minuten op 240°C en nog 10 minuten zonder deksel op 225°C.<br /><br /><b>Pistolets</b><br />Bak 20 minuten in stoomoven (stoom op lage stand) op 235°C.",
+            "Bakinstructies": "<ul><li>Brood: Zet de pot in de oven en verwarm op 250°C. Bak brood voor 25 minuten. Neem het deksel eraf en bak nog 25 minuten op 225°C.</li><li>Ciabatta: Bak 20 minuten op 240°C en nog 10 minuten zonder deksel op 225°C.</li><li>Pistolets: Bak 20 minuten in stoomoven (stoom op lage stand) op 235°C.</li></ul>",
             "Tijden": {
                 "voeden": 4,
                 "rijzen": 12,
@@ -63,7 +63,7 @@
             "Zout": 20,
             "Zaden": 0,
             "Weekwater": 0,
-            "Bakinstructies": "<b>Brood</b><br />Zet de pot in de oven en verwarm op 250°C. Bak brood voor 25 minuten. Neem het deksel eraf en bak nog 25 minuten op 225°C.<br /><br /><b>Ciabatta</b><br />Bak 20 minuten op 240°C en nog 10 minuten zonder deksel op 225°C.<br /><br /><b>Pistolets</b><br />Bak 20 minuten in stoomoven (stoom op lage stand) op 235°C.",
+            "Bakinstructies": "<ul><li>Brood: Zet de pot in de oven en verwarm op 250°C. Bak brood voor 25 minuten. Neem het deksel eraf en bak nog 25 minuten op 225°C.</li><li>Ciabatta: Bak 20 minuten op 240°C en nog 10 minuten zonder deksel op 225°C.</li><li>Pistolets: Bak 20 minuten in stoomoven (stoom op lage stand) op 235°C.</li></ul>",
             "Tijden": {
                 "voeden": 4,
                 "rijzen": 12,
@@ -81,7 +81,7 @@
             "Zout": 20,
             "Zaden": 0,
             "Weekwater": 0,
-            "Bakinstructies": "<b>Brood</b><br />Zet de pot in de oven en verwarm op 250°C. Bak brood voor 25 minuten. Neem het deksel eraf en bak nog 25 minuten op 225°C.<br /><br /><b>Ciabatta</b><br />Bak 20 minuten op 240°C en nog 10 minuten zonder deksel op 225°C.<br /><br /><b>Pistolets</b><br />Bak 20 minuten in stoomoven (stoom op lage stand) op 235°C.",
+            "Bakinstructies": "<ul><li>Brood: Zet de pot in de oven en verwarm op 250°C. Bak brood voor 25 minuten. Neem het deksel eraf en bak nog 25 minuten op 225°C.</li><li>Ciabatta: Bak 20 minuten op 240°C en nog 10 minuten zonder deksel op 225°C.</li><li>Pistolets: Bak 20 minuten in stoomoven (stoom op lage stand) op 235°C.</li></ul>",
             "Tijden": {
                 "voeden": 4,
                 "rijzen": 12,
@@ -99,7 +99,7 @@
             "Zout": 6,
             "Zaden": 127,
             "Weekwater": 127,
-            "Bakinstructies": "Bak 45 min op 225°C.",
+            "Bakinstructies": "<ul><li>Bak 45 min op 225°C.</li></ul>",
             "Tijden": {
                 "voeden": 3,
                 "rijzen": 3,
@@ -117,7 +117,7 @@
             "Zout": 6,
             "Zaden": 0,
             "Weekwater": 0,
-            "Bakinstructies": "<b>Brood: </b>Zet de pot in de oven en verwarm op 250°C. Bak brood voor 25 minuten. Neem het deksel eraf en bak nog 25 minuten tegen 225°C.",
+            "Bakinstructies": "<ul><li>Zet de pot in de oven en verwarm op 250°C. Bak brood voor 25 minuten. Neem het deksel eraf en bak nog 25 minuten tegen 225°C.</li></ul>",
             "Tijden": {
                 "voeden": 3,
                 "rijzen": 3,
