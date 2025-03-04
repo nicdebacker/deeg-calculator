@@ -85,19 +85,18 @@ function updateTimeSchedule(bread) {
     
     let schemaHTML = "<ul>";
     for (let i = 0; i < stappen.length; i++) {
-        let minTijd = new Date(klaarTijd);
         let maxTijd = new Date(klaarTijd);
+        let minTijd = new Date(klaarTijd);
         
-        minTijd.setHours(minTijd.getHours() - stappen[i][1].max);
         maxTijd.setHours(maxTijd.getHours() - stappen[i][1].min);
+        minTijd.setHours(minTijd.getHours() - stappen[i][1].max);
         
-        schemaHTML += `<li>${stappen[i][0]}: ${formatDate(minTijd)} - ${formatDate(maxTijd)}</li>`;
+        schemaHTML += `<li>${stappen[i][0]}: ${formatShortDate(minTijd)} - ${formatShortDate(maxTijd)}</li>`;
         klaarTijd = minTijd;
     }
     document.getElementById("timeSchedule").innerHTML = schemaHTML + "</ul>";
 }
 
-
-function formatDate(date) {
-    return date.toLocaleDateString("nl-BE", { weekday: 'long', hour: '2-digit', minute: '2-digit' });
+function formatShortDate(date) {
+    return date.toLocaleDateString("nl-BE", { weekday: 'short', hour: '2-digit', minute: '2-digit' });
 }
