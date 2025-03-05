@@ -112,13 +112,15 @@ function updateInterface() {
 
 function updateIngredients(bread, scalingFactor) {
     let ingredientsList = document.getElementById("ingredientsList");
-
+    ingredientsList.innerHTML = scalingFactor;
+    /*
     ingredientsList.innerHTML = Object.entries(bread.Ingredients)
         .map(([key, value]) => {
             let scaledValue = Math.round(value * scalingFactor);
             return scaledValue > 0 ? `<li>${key}: ${scaledValue} g</li>` : "";
         })
         .join("");
+        */
 }
 
 function updateFeeding(bread, numFeeds, scalingFactor) { 
