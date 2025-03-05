@@ -8,29 +8,32 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 
     document.getElementById("breadType").addEventListener("change", setInitialDate);
-    document.getElementById("doughWeight").addEventListener("change", updateInterface);
-    document.getElementById("klaarTijd").addEventListener("change", updateInterface);
     document.getElementById("feedCount").addEventListener("change", setInitialDate);
+    document.getElementById("doughWeight").addEventListener("change", updateInterface);
+    document.getElementById("hourChoice").addEventListener("change", updateInterface);
+    document.getElementById("dayChoice").addEventListener("change", updateInterface);
 });
 
 function populateDropdowns() {
     const breadDropdown = document.getElementById("breadType");
     const weightDropdown = document.getElementById("doughWeight");
+    const feedDropdown = document.getElementById("feedCount");
     
-    breadDropdown.innerHTML = breadData.Broden.map(b => `<option value="${b.Type}">${b.Type}</option>`).join("");
+    breadDropdown.innerHTML = breadData.Broden.map(b => `<option value="${b.Type}" ${b.Selected === "Yes" ? "selected" : ""}>${b.Type}</option>`).join("");
     
     weightDropdown.innerHTML = "";
     for (let i = 500; i <= 4500; i += 100) {
         weightDropdown.innerHTML += `<option value="${i}" ${i === 2500 ? "selected" : ""}>${i} g</option>`;
     }
 
-    feedCount.innerHTML = "";
+    feedDropdown.innerHTML = "";
     for (let j = 1; j <= 5; j++)  {
-        feedCount.innerHTML += `<option value="${j}" ${j === 2 ? "selected" : ""}>${j} x voeden</option>`;
+        feedDropdown.innerHTML += `<option value="${j}" ${j === 2 ? "selected" : ""}>${j} x voeden</option>`;
     }
 }
 
 function setInitialDate() {
+   /*
     const breadDropdown = document.getElementById("breadType");
     const selectedBread = window.breadData.Broden.find(b => b.Type === breadDropdown.value) || window.breadData.Broden[0];
     const feedCount = parseInt(document.getElementById("feedCount").value);
@@ -42,9 +45,11 @@ function setInitialDate() {
         document.getElementById("klaarTijd").value = etensTijd.toISOString().slice(0, 16);
         updateInterface();
     }
+    */
 }
 
 function calculateEndTime(eindTijd, tijden, feedCount) {
+    /*
     let currentTijd = new Date(eindTijd);
     let totaalTijd = tijden.rusten + tijden.bakken + tijden.rijzen + (tijden.voeden * feedCount);
     
@@ -59,9 +64,11 @@ function calculateEndTime(eindTijd, tijden, feedCount) {
     }
     
     return currentTijd;
+    */
 }
 
 function checkForbiddenHours(eindTijd, tijden, feedCount) {
+    /*
     let testTijd = new Date(eindTijd);
     let stappen = [
         { naam: "rusten", duur: tijden.rusten },
@@ -81,9 +88,11 @@ function checkForbiddenHours(eindTijd, tijden, feedCount) {
         }
     }
     return false;
+    */
 }
 
 function updateInterface() {
+    /*
     const selectedBread = breadData.Broden.find(b => b.Type === document.getElementById("breadType").value);
     if (!selectedBread) return;
 
@@ -99,9 +108,11 @@ function updateInterface() {
     updateIngredients(selectedBread, scalingFactor);
     updateFeeding(selectedBread, scalingFactor);
     updateTimeSchedule(selectedBread);
+    */
 }
 
 function updateIngredients(bread, scalingFactor) {
+    /*
     let ingredientsList = document.getElementById("ingredientsList");
     ingredientsList.innerHTML = Object.entries(bread)
         .filter(([key, value]) => !isNaN(value) && value > 0 && key !== "Type" && key !== "Bakinstructies" && key !== "Tijden")
@@ -110,9 +121,11 @@ function updateIngredients(bread, scalingFactor) {
             return scaledValue > 0 ? `<li>${key}: ${scaledValue} g</li>` : "";
         })
         .join("");
+        */
 }
 
 function updateFeeding(bread, scalingFactor) {
+    /*
     let feedList = document.getElementById("feedList");
     let starterAmount = bread.Starter * scalingFactor;
     let voedFactor = breadData.Settings.VoedFactor;
@@ -125,9 +138,11 @@ function updateFeeding(bread, scalingFactor) {
         <li>2x Voeden: ${Math.round(feed2)} g</li>
         <li>3x Voeden: ${Math.round(feed3)} g</li>
     `;
+    */
 }
 
 function updateTimeSchedule(bread) {
+    /*
     let klaarTijd = new Date(document.getElementById("klaarTijd").value);
     if (isNaN(klaarTijd)) return;
 
@@ -158,6 +173,7 @@ function updateTimeSchedule(bread) {
     });
 
     document.getElementById("timeSchedule").innerHTML = schemaHTML + "</ul>";
+    */
 }
 
 function formatShortDate(date) {
