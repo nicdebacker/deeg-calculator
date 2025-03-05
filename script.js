@@ -46,6 +46,7 @@ function setInitialDate() {
         updateInterface();
     }
     */
+   updateInterface();
 }
 
 function calculateEndTime(eindTijd, tijden, feedCount) {
@@ -92,53 +93,48 @@ function checkForbiddenHours(eindTijd, tijden, feedCount) {
 }
 
 function updateInterface() {
-    /*
     const selectedBread = breadData.Broden.find(b => b.Type === document.getElementById("breadType").value);
     if (!selectedBread) return;
 
     let doughWeight = parseInt(document.getElementById("doughWeight").value);
     
-    let totalWeight = Object.keys(selectedBread)
-        .filter(key => key !== "Type" && key !== "Bakinstructies" && key !== "Tijden")
-        .reduce((sum, key) => sum + selectedBread[key], 0);
+    let totalWeight = Object.keys(selectedBread.Ingredients).reduce((sum, key) => sum + selectedBread[key], 0);
+
+    let numFeeds = parseInt(document.getElementById("feedCount"));
 
     let scalingFactor = doughWeight / totalWeight;
     
     document.getElementById("bakingInstructions").innerHTML = selectedBread.Bakinstructies;
     updateIngredients(selectedBread, scalingFactor);
-    updateFeeding(selectedBread, scalingFactor);
-    updateTimeSchedule(selectedBread);
-    */
+    updateFeeding(selectedBread, numFeeds, scalingFactor);
+   // updateTimeSchedule(selectedBread);
 }
 
 function updateIngredients(bread, scalingFactor) {
-    /*
     let ingredientsList = document.getElementById("ingredientsList");
-    ingredientsList.innerHTML = Object.entries(bread)
-        .filter(([key, value]) => !isNaN(value) && value > 0 && key !== "Type" && key !== "Bakinstructies" && key !== "Tijden")
+
+    ingredientsList.innerHTML = Object.entries(bread.Ingredients)
+        .filter(([key, value]) => !isNaN(value) && value > 0)
         .map(([key, value]) => {
             let scaledValue = Math.round(value * scalingFactor);
             return scaledValue > 0 ? `<li>${key}: ${scaledValue} g</li>` : "";
         })
         .join("");
-        */
 }
 
-function updateFeeding(bread, scalingFactor) {
-    /*
+function updateFeeding(bread, numFeeds, scalingFactor) { 
     let feedList = document.getElementById("feedList");
-    let starterAmount = bread.Starter * scalingFactor;
+    let starterAmount = bread.Ingredients.Starter * scalingFactor;
     let voedFactor = breadData.Settings.VoedFactor;
-    let feed1 = starterAmount / voedFactor;
-    let feed2 = feed1 / voedFactor;
-    let feed3 = feed2 / voedFactor;
+    let feedAmounts = [starterAmount / voedFactor];
     
-    feedList.innerHTML = `
-        <li>1x Voeden: ${Math.round(feed1)} g</li>
-        <li>2x Voeden: ${Math.round(feed2)} g</li>
-        <li>3x Voeden: ${Math.round(feed3)} g</li>
-    `;
-    */
+    for (let i = 1; i < numFeeds; i++) {
+        feedAmounts.push(feedAmounts[i - 1] / voedFactor);
+    }
+    
+    feedList.innerHTML = feedAmounts.map((amount, index) => 
+        `<li>${index + 1}x Voeden: ${Math.round(amount)} g</li>`
+    ).join('');
 }
 
 function updateTimeSchedule(bread) {
