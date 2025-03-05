@@ -23,6 +23,11 @@ function populateDropdowns() {
     for (let i = 500; i <= 4500; i += 100) {
         weightDropdown.innerHTML += `<option value="${i}" ${i === 2500 ? "selected" : ""}>${i} g</option>`;
     }
+
+    feedCount.innerHTML = "";
+    for (let j = 1; j <= 5; j++)  {
+        feedCount.innerHTML += `<option value="${i}" ${i === 2 ? "selected" : ""}>${i} x voeden</option>`;
+    }
 }
 
 function setInitialDate() {
