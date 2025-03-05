@@ -100,7 +100,7 @@ function updateInterface() {
     
     let totalWeight = Object.keys(selectedBread.Ingredients).reduce((sum, key) => sum + selectedBread.Ingredients[key], 0);
 
-    let numFeeds = parseInt(document.getElementById("feedCount"));
+    let numFeeds = parseInt(document.getElementById("feedCount").value);
 
     let scalingFactor = doughWeight / totalWeight;
     
@@ -125,7 +125,7 @@ function updateFeeding(bread, numFeeds, scalingFactor) {
     let feedList = document.getElementById("feedList");
     let starterAmount = bread.Ingredients.Starter * scalingFactor;
     let voedFactor = breadData.Settings.VoedFactor;
-    let feedAmounts = [starterAmount];
+    let feedAmounts = [starterAmount/voedFactor];
     
     for (let i = 1; i < numFeeds; i++) {
         feedAmounts.push(feedAmounts[i - 1] / voedFactor);
