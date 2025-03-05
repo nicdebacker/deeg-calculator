@@ -34,23 +34,25 @@ function populateDropdowns() {
 }
 
 function setInitialDate() {
-   /*
+    /*
     const breadDropdown = document.getElementById("breadType");
-    const selectedBread = window.breadData.Broden.find(b => b.Type === breadDropdown.value) || window.breadData.Broden[0];
+    const selectedBread = window.breadData.Broden.find(b => b.Name === breadDropdown.value) || window.breadData.Broden[0];
+    const selectedSchema = window.breadData.Soorten.find(s => s.Type === selectedBread.Type).Schema;
     const feedCount = parseInt(document.getElementById("feedCount").value);
     
     if (selectedBread) {
         let eindTijd = new Date();
     
-        let etensTijd = calculateEndTime(eindTijd, selectedBread.Tijden, feedCount);
-        document.getElementById("klaarTijd").value = etensTijd.toISOString().slice(0, 16);
+        let etensTijd = calculateEndTime(eindTijd, selectedSchema, feedCount, selectedBread.Type);
+       // document.getElementById("timeSchedule")
+       // document.getElementById("dayChoice").value = etensTijd.toISOString().slice(0, 16);
         updateInterface();
     }
     */
    updateInterface();
 }
 
-function calculateEndTime(eindTijd, tijden, feedCount) {
+function calculateEndTime(eindTijd, tijden, feedCount, type) {
     /*
     let currentTijd = new Date(eindTijd);
     let totaalTijd = tijden.rusten + tijden.bakken + tijden.rijzen + (tijden.voeden * feedCount);
@@ -105,9 +107,10 @@ function updateInterface() {
 
     let scalingFactor = doughWeight / totalWeight;
     
-    document.getElementById("bakingInstructions").innerHTML = breadData.Soorten.find(s => s.Type === selectedBread.Type).Bakinstructies;
+    //document.getElementById("bakingInstructions").innerHTML = breadData.Soorten.find(s => s.Type === selectedBread.Type).Bakinstructies;
     updateIngredients(selectedBread, scalingFactor);
     updateFeeding(selectedBread, numFeeds, scalingFactor);
+    updateInstructions(breadData.Soorten.find(s => s.Type === selectedBread.Type).Schema);
    // updateTimeSchedule(selectedBread);
 }
 
@@ -120,6 +123,18 @@ function updateIngredients(bread, scalingFactor) {
             return scaledValue > 0 ? `<li>${key}: ${scaledValue} g</li>` : "";
         })
         .join("");
+}
+
+function updateInstructions(instructies) {
+    let instructionList = document.getElementById("bakingInstructions");
+
+    instructies.forEach(entry => {
+        if (entry.instructie) {
+            const li = document.createElement("li");
+            li.textContent = entry.instructie;
+            instructionList.appendChild(li);
+        }
+    });
 }
 
 function updateFeeding(bread, numFeeds, scalingFactor) { 
