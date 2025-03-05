@@ -1,102 +1,63 @@
 {
     "Broden": [
         {
-            "Type": "Wit (60% water)",
+            "Name": "Wit (60% water)",
+            "Type": "witdesem",
             "Selected": "No",
             "Ingredients": {
                 "Tarwe (T65)": 1000, 
                 "Water": 600,
                 "Starter": 200,
                 "Zout": 20
-            },
-            "Bakinstructies": "<ul><li><b>Brood:</b> Zet de pot in de oven en verwarm op 250°C. Bak brood voor 25 minuten. Neem het deksel eraf en bak nog 25 minuten op 225°C.</li><li><b>Ciabatta:</b> Bak 20 minuten op 240°C en nog 10 minuten zonder deksel op 225°C.</li><li><b>Pistolets:</b> Bak 20 minuten in stoomoven (stoom op lage stand) op 235°C.</li></ul>",
-            "Schema:": "desem",
-            "Tijden": {
-                "Deeg kneden": 0.5,
-                "Deeg laten rijzen": 10,
-                "Deeg opbollen en rusten": 1,
-                "Brood bakken": 1,
-                "Brood laten koelen": 1
             }
         },
         {
-            "Type": "Wit (62,5% water)",
+            "Name": "Wit (62,5% water)",
+            "Type": "witdesem",
             "Selected": "No",
             "Ingredients": {
                 "Tarwe (T65)": 1000,
                 "Water": 625,
                 "Starter": 200,
                 "Zout": 20
-            },
-            "Bakinstructies": "<ul><li><b>Brood:</b> Zet de pot in de oven en verwarm op 250°C. Bak brood voor 25 minuten. Neem het deksel eraf en bak nog 25 minuten op 225°C.</li><li><b>Ciabatta:</b> Bak 20 minuten op 240°C en nog 10 minuten zonder deksel op 225°C.</li><li><b>Pistolets:</b> Bak 20 minuten in stoomoven (stoom op lage stand) op 235°C.</li></ul>",
-            "Schema:": "desem",
-            "Tijden": {
-                "Deeg kneden": 0.5,
-                "Deeg laten rijzen": 10,
-                "Deeg opbollen en rusten": 1,
-                "Brood bakken": 1,
-                "Brood laten koelen": 1
             }
         },
         {
-            "Type": "Wit (65% water)",
+            "Name": "Wit (65% water)",
+            "Type": "witdesem",
             "Selected": "Yes",
             "Ingredients": {
                 "Tarwe (T65)": 1000,
                 "Water": 650,
                 "Starter": 200,
                 "Zout": 20
-            },
-            "Bakinstructies": "<ul><li><b>Brood:</b> Zet de pot in de oven en verwarm op 250°C. Bak brood voor 25 minuten. Neem het deksel eraf en bak nog 25 minuten op 225°C.</li><li><b>Ciabatta:</b> Bak 20 minuten op 240°C en nog 10 minuten zonder deksel op 225°C.</li><li><b>Pistolets:</b> Bak 20 minuten in stoomoven (stoom op lage stand) op 235°C.</li></ul>",
-            "Schema:": "desem",
-            "Tijden": {
-                "Deeg kneden": 0.5,
-                "Deeg laten rijzen": 10,
-                "Deeg opbollen en rusten": 1,
-                "Brood bakken": 1,
-                "Brood laten koelen": 1
             }
         },
         {
-            "Type": "Wit (67,5% water)",
+            "Name": "Wit (67,5% water)",
+            "Type": "witdesem",
             "Selected": "No",
             "Ingredients": {
                 "Tarwe (T65)": 1000,
                 "Water": 675,
                 "Starter": 200,
                 "Zout": 20
-            },
-            "Bakinstructies": "<ul><li><b>Brood:</b> Zet de pot in de oven en verwarm op 250°C. Bak brood voor 25 minuten. Neem het deksel eraf en bak nog 25 minuten op 225°C.</li><li><b>Ciabatta:</b> Bak 20 minuten op 240°C en nog 10 minuten zonder deksel op 225°C.</li><li><b>Pistolets:</b> Bak 20 minuten in stoomoven (stoom op lage stand) op 235°C.</li></ul>",
-            "Schema:": "desem",
-            "Tijden": {
-                "Deeg kneden": 0.5,
-                "Deeg laten rijzen": 10,
-                "Deeg opbollen en rusten": 1,
-                "Brood bakken": 1,
-                "Brood laten koelen": 1
             }
         },
         {
-            "Type": "Wit (70% water)",
+            "Name": "Wit (70% water)",
+            "Type": "witdesem",
             "Selected": "No",
             "Ingredients": {
                 "Tarwe (T65)": 1000,
                 "Water": 700,
                 "Starter": 200,
                 "Zout": 20
-            },
-            "Bakinstructies": "<ul><li><b>Brood:</b> Zet de pot in de oven en verwarm op 250°C. Bak brood voor 25 minuten. Neem het deksel eraf en bak nog 25 minuten op 225°C.</li><li><b>Ciabatta:</b> Bak 20 minuten op 240°C en nog 10 minuten zonder deksel op 225°C.</li><li><b>Pistolets:</b> Bak 20 minuten in stoomoven (stoom op lage stand) op 235°C.</li></ul>",
-            "Schema:": "desem",
-            "Tijden": {
-                "Deeg kneden": 0.5,
-                "Deeg laten rijzen": 10,
-                "Deeg opbollen en rusten": 1,
-                "Brood bakken": 1,
-                "Brood laten koelen": 1
             }
         },
         {
-            "Type": "Rogge",
+            "Name": "Roggebrood",
+            "Type": "rogge",
             "Selected": "No",
             "Ingredients": {
                 "Rogge (R100)": 138,
@@ -105,10 +66,36 @@
                 "Zout": 6,
                 "Zaden": 127,
                 "Weekwater": 127
-            },
+            }
+        },
+        {
+            "Name": "Tourte de Seigle",
+            "Type": "seigle",
+            "Selected": "No",
+            "Ingredients": {
+                "Rogge": 340,
+                "Water": 28,
+                "Starter": 200,
+                "Zout": 6
+            }
+        }
+    ],
+    "Soorten": [
+        {
+            "Type": "witdesem",
+            "Bakinstructies": "<ul><li><b>Brood:</b> Zet de pot in de oven en verwarm op 250°C. Bak brood voor 25 minuten. Neem het deksel eraf en bak nog 25 minuten op 225°C.</li><li><b>Ciabatta:</b> Bak 20 minuten op 240°C en nog 10 minuten zonder deksel op 225°C.</li><li><b>Pistolets:</b> Bak 20 minuten in stoomoven (stoom op lage stand) op 235°C.</li></ul>",
+            "Schema": {
+                "Deeg kneden": 0.5,
+                "Deeg laten rijzen": 10,
+                "Deeg opbollen en rusten": 1,
+                "Brood bakken": 1,
+                "Brood laten koelen": 1
+            }
+        },
+        {
+            "Type": "rogge",
             "Bakinstructies": "<ul><li>Bak 45 min op 225°C.</li></ul>",
-            "Schema:": "rogge",
-            "Tijden": {
+            "Schema": {
                 "Zaden weken": 24,
                 "Deeg kneden": 0.5,
                 "Deeg laten rijzen": 3,
@@ -117,23 +104,16 @@
             }
         },
         {
-            "Type": "Tourte De Seigle",
-            "Selected": "No",
-            "Ingredients": {
-                "Rogge": 340,
-                "Water": 28,
-                "Starter": 200,
-                "Zout": 6
-            },
+            "Type": "seigle",
             "Bakinstructies": "<ul><li>Zet de pot in de oven en verwarm op 250°C. Bak brood voor 25 minuten. Neem het deksel eraf en bak nog 25 minuten tegen 225°C.</li></ul>",
-            "Schema:": "seigle",
-            "Tijden": {
+            "Schema" {
                 "Deeg kneden": 0.5,
                 "Deeg laten rijzen": 3,
                 "Brood bakken": 1,
                 "Brood laten rusten": 24
             }
         }
+        
     ],
     "Settings": {
         "VoedFactor": 2.7,
