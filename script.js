@@ -10,8 +10,8 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("breadType").addEventListener("change", setInitialDate);
     document.getElementById("feedCount").addEventListener("change", setInitialDate);
     document.getElementById("doughWeight").addEventListener("change", updateInterface);
-    document.getElementById("hourChoice").addEventListener("change", updateInterface);
-    document.getElementById("dayChoice").addEventListener("change", updateInterface);
+    //document.getElementById("hourChoice").addEventListener("change", updateInterface);
+    //document.getElementById("dayChoice").addEventListener("change", updateInterface);
 });
 
 function populateDropdowns() {
