@@ -114,7 +114,6 @@ function updateIngredients(bread, scalingFactor) {
     let ingredientsList = document.getElementById("ingredientsList");
 
     ingredientsList.innerHTML = Object.entries(bread.Ingredients)
-        .filter(([key, value]) => !isNaN(value) && value > 0)
         .map(([key, value]) => {
             let scaledValue = Math.round(value * scalingFactor);
             return scaledValue > 0 ? `<li>${key}: ${scaledValue} g</li>` : "";
@@ -126,7 +125,7 @@ function updateFeeding(bread, numFeeds, scalingFactor) {
     let feedList = document.getElementById("feedList");
     let starterAmount = bread.Ingredients.Starter * scalingFactor;
     let voedFactor = breadData.Settings.VoedFactor;
-    let feedAmounts = [starterAmount / voedFactor];
+    let feedAmounts = [starterAmount];
     
     for (let i = 1; i < numFeeds; i++) {
         feedAmounts.push(feedAmounts[i - 1] / voedFactor);
