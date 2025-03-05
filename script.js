@@ -19,7 +19,7 @@ function populateDropdowns() {
     const weightDropdown = document.getElementById("doughWeight");
     const feedDropdown = document.getElementById("feedCount");
     
-    breadDropdown.innerHTML = breadData.Broden.map(b => `<option value="${b.Type}" ${b.Selected === "Yes" ? "selected" : ""}>${b.Type}</option>`).join("");
+    breadDropdown.innerHTML = breadData.Broden.map(b => `<option value="${b.Name}" ${b.Selected === "Yes" ? "selected" : ""}>${b.Name}</option>`).join("");
     
     weightDropdown.innerHTML = "";
     for (let i = 500; i <= 4500; i += 100) {
@@ -27,9 +27,10 @@ function populateDropdowns() {
     }
 
     feedDropdown.innerHTML = "";
-    for (let j = 1; j <= 5; j++)  {
-        feedDropdown.innerHTML += `<option value="${j}" ${j === 2 ? "selected" : ""}>${j} x voeden</option>`;
+    for (let j = 1; j <= 4; j++)  {
+        feedDropdown.innerHTML += `<option value="${j}" ${j === 2 ? "selected" : ""}>${j}x voeden (1:1:1)</option>`;
     }
+    feedDropdown.innerHTML += `<option value="5"}>1x voeden (1:2:2)</option>`;
 }
 
 function setInitialDate() {
@@ -93,7 +94,7 @@ function checkForbiddenHours(eindTijd, tijden, feedCount) {
 }
 
 function updateInterface() {
-    const selectedBread = breadData.Broden.find(b => b.Type === document.getElementById("breadType").value);
+    const selectedBread = breadData.Broden.find(b => b.Name === document.getElementById("breadType").value);
     if (!selectedBread) return;
 
     let doughWeight = parseInt(document.getElementById("doughWeight").value);
@@ -104,7 +105,7 @@ function updateInterface() {
 
     let scalingFactor = doughWeight / totalWeight;
     
-    document.getElementById("bakingInstructions").innerHTML = selectedBread.Bakinstructies;
+    document.getElementById("bakingInstructions").innerHTML = breadData.Soorten.find(s => s.Type === selectedBread.Type).Bakinstructies;
     updateIngredients(selectedBread, scalingFactor);
     updateFeeding(selectedBread, numFeeds, scalingFactor);
    // updateTimeSchedule(selectedBread);
