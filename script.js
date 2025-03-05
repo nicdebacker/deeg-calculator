@@ -26,7 +26,7 @@ function populateDropdowns() {
 
     feedCount.innerHTML = "";
     for (let j = 1; j <= 5; j++)  {
-        feedCount.innerHTML += `<option value="${i}" ${i === 2 ? "selected" : ""}>${i} x voeden</option>`;
+        feedCount.innerHTML += `<option value="${j}" ${j === 2 ? "selected" : ""}>${j} x voeden</option>`;
     }
 }
 
