@@ -128,6 +128,7 @@ function updateIngredients(bread, scalingFactor) {
 function updateInstructions(instructies) {
     let instructionList = document.getElementById("bakingInstructions");
 
+    instructionList.innerHTML = "";
     instructies.forEach(entry => {
         if (entry.instructie) {
             const li = document.createElement("li");
