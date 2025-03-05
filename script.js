@@ -98,7 +98,7 @@ function updateInterface() {
 
     let doughWeight = parseInt(document.getElementById("doughWeight").value);
     
-    let totalWeight = Object.keys(selectedBread.Ingredients).reduce((sum, key) => sum + selectedBread[key], 0);
+    let totalWeight = Object.keys(selectedBread.Ingredients).reduce((sum, key) => sum + selectedBread.Ingredients[key], 0);
 
     let numFeeds = parseInt(document.getElementById("feedCount"));
 
@@ -112,15 +112,13 @@ function updateInterface() {
 
 function updateIngredients(bread, scalingFactor) {
     let ingredientsList = document.getElementById("ingredientsList");
-    ingredientsList.innerHTML = scalingFactor;
-    /*
+
     ingredientsList.innerHTML = Object.entries(bread.Ingredients)
         .map(([key, value]) => {
             let scaledValue = Math.round(value * scalingFactor);
             return scaledValue > 0 ? `<li>${key}: ${scaledValue} g</li>` : "";
         })
         .join("");
-        */
 }
 
 function updateFeeding(bread, numFeeds, scalingFactor) { 
