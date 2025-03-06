@@ -219,6 +219,7 @@
     ],
     "Settings": {
         "VoedFactor": 2.7,
+        "DubbelVoedFactor": 4.5,
         "VoedTijd": 4
     }
 }
