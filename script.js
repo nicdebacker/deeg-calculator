@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(data => {
             window.breadData = data;
             populateDropdowns();
-            setInitialDate();
+            updateInterface();
         });
 
     document.getElementById("breadType").addEventListener("change", updateInterface);
