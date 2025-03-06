@@ -99,15 +99,58 @@ function updateFeeding(bread, numFeeds, scalingFactor) {
 }
 
 function updateTimeSchedule (bread) {
-    const schedule = calculateSchedule();
+    let schedule = calculateSchedule();
     const scheduleHTML = document.getElementById("timeSchedule");
+
+    schedule = validTimeSchedule(schedule); 
 
     scheduleHTML.innerHTML = "";
     schedule.forEach(step => {
         const listItem = document.createElement('li');
-        listItem.textContent = `${step.time.toLocaleString()} - ${step.title}`;
+        listItem.textContent = `${formatShortDate(step.time)} - ${step.title}`;
         scheduleHTML.appendChild(listItem);
     });
+}
+
+function validTimeSchedule(schedule) {
+    // Controleer op verboden tijden
+    let hasForbiddenTime = true;
+  
+    while (hasForbiddenTime) {
+      hasForbiddenTime = false;
+  
+      // Loop door alle tijden in het schema
+      for (let i = 0; i < schedule.length; i++) {
+        const entry = schedule[i];
+  
+        // Controleer of de tijd verboden is
+        if (isForbiddenTime(entry.time)) {
+          hasForbiddenTime = true;
+          break; // Stop de loop als er een verboden tijd is gevonden
+        }
+      }
+  
+      // Als er een verboden tijd is, voeg een uur toe aan alle tijden
+      if (hasForbiddenTime) {
+        for (let i = 0; i < schedule.length; i++) {
+          schedule[i].time.setHours(schedule[i].time.getHours() + 1);
+        }
+      }
+    }
+  
+    return schedule;
+  }
+
+function isForbiddenTime (date) {
+    const day = date.getDay(); // 0 = zondag, 6 = zaterdag
+    const hour = date.getHours();
+  
+    if (day >= 0 && day <= 4) { // Zondag t/m donderdag
+      return hour < 7 || hour >= 22;
+    } else if (day === 5 || day === 6) { // Vrijdag en zaterdag
+      return hour < 8 || hour >= 23;
+    }
+    return false;
 }
 
 function calculateSchedule () {
@@ -133,7 +176,7 @@ function calculateSchedule () {
                 } 
                 for (let i = 1; i <= feedCount; i++) {
                     schedule.push({
-                        time: formatShortDate(new Date(currentTime)),
+                        time: new Date(currentTime),
                         title: step.short
                     });
                     let minutesToAdd = duration * 60;
@@ -150,7 +193,7 @@ function calculateSchedule () {
                     }
                 }
                 schedule.push({
-                    time: formatShortDate(new Date(currentTime)),
+                    time: new Date(currentTime),
                     title: step.short
                 });
                 let minutesToAdd = Math.abs(duration) * 60;
@@ -163,5 +206,5 @@ function calculateSchedule () {
 }
 
 function formatShortDate(date) {
-    return date.toLocaleDateString("nl-BE", { weekday: 'short', hour: '2-digit', minute: '2-digit' });
+    return new Date(date).toLocaleDateString("nl-BE", { weekday: 'short', hour: '2-digit', minute: '2-digit' });
 }
