@@ -113,12 +113,12 @@ function updateTimeSchedule (bread) {
 }
 
 function validTimeSchedule(schedule) {
-  /*
     // Controleer op verboden tijden
     let hasForbiddenTime = true;
   
     while (hasForbiddenTime) {
-      hasForbiddenTime = false;
+        console.log("nieuwe check");
+        hasForbiddenTime = false;
   
       // Loop door alle tijden in het schema
       for (let i = 0; i < schedule.length; i++) {
@@ -126,37 +126,41 @@ function validTimeSchedule(schedule) {
   
         // Controleer of de tijd verboden is
         if (isForbiddenTime(entry.time)) {
+          console.log("true");
           hasForbiddenTime = true;
           break; // Stop de loop als er een verboden tijd is gevonden
         }
       }
   
       // Als er een verboden tijd is, voeg een uur toe aan alle tijden
-      if (hasForbiddenTime) {*/
+      if (hasForbiddenTime) {
         for (let i = 0; i < schedule.length; i++) {
           schedule[i].time.setHours(schedule[i].time.getHours() + 1);
         }
-   /*   }
+      }
     }
-  */
     return schedule;
   }
 
 function isForbiddenTime (date) {
     let d = new Date(date);
 
+
     const day = d.getDay(); // 0 = zondag, 6 = zaterdag
     const hour = d.getHours();
 
-    return hour;
+    console.log(d);
+    console.log(day);
+    console.loag(hour);
+
     if (day >= 1 && day <= 4) { // maandag t/m donderdag
-        return hour < 6 || hour >= 21;
-    } else if (day === 5) { // vrijdag
-        return hour < 6 || hour >= 22;
-    } else if (day === 6) { //zaterdag
-        return hour < 7 || hour >= 22;
-    } else if (day === 7) { // zondag
         return hour < 7 || hour >= 21;
+    } else if (day === 5) { // vrijdag
+        return hour < 7 || hour >= 22;
+    } else if (day === 6) { //zaterdag
+        return hour < 8 || hour >= 22;
+    } else if (day === 7) { // zondag
+        return hour < 8 || hour >= 21;
     }
     return false;
 }
