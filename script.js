@@ -157,7 +157,8 @@ function isForbiddenTime (date) {
     } else if (day === 7) { // zondag
         return hour < 7 || hour >= 21;
     }
-    return false;
+   // return false;
+    return hour;
 }
 
 function calculateSchedule () {
