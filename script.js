@@ -102,7 +102,7 @@ function updateTimeSchedule (bread) {
     let schedule = calculateSchedule();
     const scheduleHTML = document.getElementById("timeSchedule");
 
-    //schedule = validTimeSchedule(schedule); 
+    schedule = validTimeSchedule(schedule); 
 
     scheduleHTML.innerHTML = "";
     schedule.forEach(step => {
@@ -113,6 +113,7 @@ function updateTimeSchedule (bread) {
 }
 
 function validTimeSchedule(schedule) {
+  /*
     // Controleer op verboden tijden
     let hasForbiddenTime = true;
   
@@ -131,13 +132,13 @@ function validTimeSchedule(schedule) {
       }
   
       // Als er een verboden tijd is, voeg een uur toe aan alle tijden
-      if (hasForbiddenTime) {
+      if (hasForbiddenTime) {*/
         for (let i = 0; i < schedule.length; i++) {
           schedule[i].time.setHours(schedule[i].time.getHours() + 1);
         }
-      }
+   /*   }
     }
-  
+  */
     return schedule;
   }
 
@@ -148,13 +149,13 @@ function isForbiddenTime (date) {
     const hour = d.getHours();
   
     if (day >= 1 && day <= 4) { // maandag t/m donderdag
-        return hour < 7 || hour >= 22;
+        return hour < 6 || hour >= 21;
     } else if (day === 5) { // vrijdag
-        return hour < 7 || hour >= 23;
+        return hour < 6 || hour >= 22;
     } else if (day === 6) { //zaterdag
-        return hour < 8 || hour >= 23;
+        return hour < 7 || hour >= 22;
     } else if (day === 7) { // zondag
-        return hour < 8 || hour >= 22;
+        return hour < 7 || hour >= 21;
     }
     return false;
 }
