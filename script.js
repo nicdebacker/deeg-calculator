@@ -143,6 +143,8 @@ function validTimeSchedule(schedule) {
 
 function isForbiddenTime (date) {
     let d = new Date(date);
+    return d;
+    /*
     const day = d.getDay(); // 0 = zondag, 6 = zaterdag
     const hour = d.getHours();
   
@@ -152,6 +154,7 @@ function isForbiddenTime (date) {
       return hour < 8 || hour >= 23;
     }
     return false;
+    */
 }
 
 function calculateSchedule () {
