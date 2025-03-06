@@ -102,7 +102,7 @@ function updateTimeSchedule (bread) {
     let schedule = calculateSchedule();
     const scheduleHTML = document.getElementById("timeSchedule");
 
-    schedule = validTimeSchedule(schedule); 
+    //schedule = validTimeSchedule(schedule); 
 
     scheduleHTML.innerHTML = "";
     schedule.forEach(step => {
