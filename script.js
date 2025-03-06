@@ -114,7 +114,7 @@ function updateTimeSchedule (startingDate, startingTime) {
     const opties = { weekday: 'long', day: 'numeric', month: 'long' };
     const formatter = new Intl.DateTimeFormat('nl-NL', opties);
 
-    schedule = validTimeSchedule(schedule); 
+   // schedule = validTimeSchedule(schedule); 
 
     scheduleHTML.innerHTML = "";
     schedule.forEach(step => {
