@@ -120,7 +120,7 @@ function updateTimeSchedule (bread) {
     dayDropdown.innerHTML = "";
     for (let i = 1; i <= 5; i++) {
         dayDropdown.innerHTML += `<option value="${startTime}" ${i === 1 ? "selected" : ""}>${startTime.toDateString()}</option>`;
-        startTime.setDay(startTime.getDay() + 1);
+        startTime.setHours(startTime.getHours() + 24);
     }
 
     hourDropdown.innerHTML = "";
