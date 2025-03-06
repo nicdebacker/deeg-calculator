@@ -10,8 +10,8 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("breadType").addEventListener("change", updateInterface);
     document.getElementById("feedCount").addEventListener("change", updateInterface);
     document.getElementById("doughWeight").addEventListener("change", updateInterface);
-    //document.getElementById("dayChoice").addEventListener("change", updateInterface);
-    //document.getElementById("hourChoice").addEventListener("change", updateInterface);
+    document.getElementById("dayChoice").addEventListener("change", updateBakeSchedule);
+    document.getElementById("hourChoice").addEventListener("change", updateBakeSchedule;
 });
 
 function populateDropdowns() {
@@ -99,11 +99,20 @@ function updateFeeding(bread, numFeeds, scalingFactor) {
     
 }
 
+function updateBakeSchedule () {
+    const dayDropdown = document.getElementById("dayChoice");
+    const hourDropdown = document.getElementById("hourChoice");
+
+    calculateSchedule(dayDropdown.value, hourDropdown.value);
+}
+
 function updateTimeSchedule (bread) {
     let schedule = calculateSchedule();
     const scheduleHTML = document.getElementById("timeSchedule");
     const dayDropdown = document.getElementById("dayChoice");
     const hourDropdown = document.getElementById("hourChoice");
+    const opties = { weekday: 'long', day: 'numeric', month: 'long' };
+    const formatter = new Intl.DateTimeFormat('nl-NL', opties);
 
     schedule = validTimeSchedule(schedule); 
 
@@ -119,7 +128,7 @@ function updateTimeSchedule (bread) {
 
     dayDropdown.innerHTML = "";
     for (let i = 1; i <= 5; i++) {
-        dayDropdown.innerHTML += `<option value="${startTime}" ${i === 1 ? "selected" : ""}>${startTime.toDateString()}</option>`;
+        dayDropdown.innerHTML += `<option value="${startTime}" ${i === 1 ? "selected" : ""}>${formatter.format(startTime)}</option>`;
         startTime.setHours(startTime.getHours() + 24);
     }
 
@@ -177,13 +186,19 @@ function isForbiddenTime (date) {
     return false;
 }
 
-function calculateSchedule () {
+function calculateSchedule (startingDate, startingTime) {
     const breadDropdown = document.getElementById("breadType");
     const selectedBread = window.breadData.Broden.find(b => b.Name === breadDropdown.value) || window.breadData.Broden[0];
     const selectedSchema = window.breadData.Soorten.find(s => s.Type === selectedBread.Type).Schema;
     const feedCount = parseInt(document.getElementById("feedCount").value);
-    const now = new Date();
- 
+    
+    let now = new Date();
+
+    if (startingDate) {
+        now = new Date(startingDate);
+        now.setHours(startingTime,0,0,0);
+    } 
+    
     const schedule = [];
     let currentTime = new Date(now);
 
