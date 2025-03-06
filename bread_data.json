@@ -142,12 +142,12 @@
                 {
                     "instructie": "Alle ingrediënten in een kom doen en met de hand zo'n 5 tot 10 minuten door elkaar mengen (zonder te kneden) tot er een egale deeg ontstaat. Zorg dat het water lauw tot warm is.",
                     "short": "Deeg mengen",
-                    "tijd": 0.2
+                    "tijd": 0.25
                 },
                 {
                     "instructie": "Een bakvorm inspuiten met anti-kleef spray en het deeg er egaal in verdelen. Gebruik genoeg lauw water om een mooi egaal bovenvlak te krijgen.",
                     "short": "Deeg in bakvorm",
-                    "tijd": 0.2
+                    "tijd": 0.25
                 },
                 {
                     "instructie": "Het deeg zo'n 2-3 uur in de warmtekast bij 26°C laten rijzen tot er kleine gaatjes in het deeg verschijnen.",
@@ -182,7 +182,7 @@
                 {
                     "instructie": "Alle ingrediënten in een kom doen en met de hand zo'n 5 tot 10 minuten door elkaar mengen (zonder te kneden) tot er een egale deeg ontstaat. Zorg dat het water lauw tot warm is.",
                     "short": "Deeg mengen",
-                    "tijd": 0.2
+                    "tijd": 0.25
                 },
                 {
                     "instructie": "Het deeg zo'n 2-3 uur in de warmtekast bij 21°C laten rijzen tot er kleine gaatjes in het deeg verschijnen.",
@@ -192,7 +192,7 @@
                 {
                     "instructie": "Het deeg verdelen en door het meel rollen tot een mooie bol.",
                     "short": "Deeg verdelen en opbollen",
-                    "tijd": 0.2
+                    "tijd": 0.25
                 },
                 {
                     "instructie": "Plaats de bol in een rijsmandje met de bolle kant naar onder. Goed inbloemen, want rogge plakt. Laat een half uur rusten.",
