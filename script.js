@@ -160,7 +160,6 @@ function validTimeSchedule(schedule) {
       if (hasForbiddenTime) {
         for (let i = 0; i < schedule.length; i++) {
           schedule[i].time.setHours(schedule[i].time.getHours() + 1);
-          schedule[i].time.setMinutes(0,0,0);
         }
       }
     }
@@ -192,6 +191,12 @@ function calculateSchedule (startingDate, startingTime) {
     const feedCount = parseInt(document.getElementById("feedCount").value);
     
     let now = new Date();
+    if (now.getMinutes() < 15) {
+        now.setMinutes(0,0,0);
+    } else {
+        now.setHours(now.getHours() + 1);
+        now.setMinutes(0,0,0);
+    }
 
     if (startingDate) {
         now = new Date(startingDate);
