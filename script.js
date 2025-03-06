@@ -7,10 +7,9 @@ document.addEventListener("DOMContentLoaded", function() {
             setInitialDate();
         });
 
-    document.getElementById("breadType").addEventListener("change", setInitialDate);
-    document.getElementById("feedCount").addEventListener("change", setInitialDate);
+    document.getElementById("breadType").addEventListener("change", updateInterface);
+    document.getElementById("feedCount").addEventListener("change", updateInterface);
     document.getElementById("doughWeight").addEventListener("change", updateInterface);
-    //document.getElementById("hourChoice").addEventListener("change", updateInterface);
     //document.getElementById("dayChoice").addEventListener("change", updateInterface);
 });
 
@@ -33,68 +32,6 @@ function populateDropdowns() {
     feedDropdown.innerHTML += `<option value="5"}>1x voeden (1:2:2)</option>`;
 }
 
-function setInitialDate() {
-    /*
-    const breadDropdown = document.getElementById("breadType");
-    const selectedBread = window.breadData.Broden.find(b => b.Name === breadDropdown.value) || window.breadData.Broden[0];
-    const selectedSchema = window.breadData.Soorten.find(s => s.Type === selectedBread.Type).Schema;
-    const feedCount = parseInt(document.getElementById("feedCount").value);
-    
-    if (selectedBread) {
-        let eindTijd = new Date();
-    
-        let etensTijd = calculateEndTime(eindTijd, selectedSchema, feedCount, selectedBread.Type);
-       // document.getElementById("timeSchedule")
-       // document.getElementById("dayChoice").value = etensTijd.toISOString().slice(0, 16);
-        updateInterface();
-    }
-    */
-   updateInterface();
-}
-
-function calculateEndTime(eindTijd, tijden, feedCount, type) {
-    /*
-    let currentTijd = new Date(eindTijd);
-    let totaalTijd = tijden.rusten + tijden.bakken + tijden.rijzen + (tijden.voeden * feedCount);
-    
-    currentTijd.setHours(currentTijd.getHours() + totaalTijd);
-    
-    while (checkForbiddenHours(currentTijd, tijden, feedCount)) {
-        currentTijd.setHours(currentTijd.getHours() + 1);
-    }
-    
-    while (currentTijd < new Date()) {
-        currentTijd.setHours(currentTijd.getHours() + 24);
-    }
-    
-    return currentTijd;
-    */
-}
-
-function checkForbiddenHours(eindTijd, tijden, feedCount) {
-    /*
-    let testTijd = new Date(eindTijd);
-    let stappen = [
-        { naam: "rusten", duur: tijden.rusten },
-        { naam: "bakken", duur: tijden.bakken },
-        { naam: "rijzen", duur: tijden.rijzen }
-    ];
-    
-    for (let i = 1; i <= feedCount; i++) {
-        stappen.push({ naam: `${i}x Voeden`, duur: tijden.voeden });
-    }
-    
-    for (let stap of stappen) {
-        testTijd.setHours(testTijd.getHours() - stap.duur);
-        
-        if (testTijd.getHours() <= 7 || testTijd.getHours() >= 23) {
-            return true;
-        }
-    }
-    return false;
-    */
-}
-
 function updateInterface() {
     const selectedBread = breadData.Broden.find(b => b.Name === document.getElementById("breadType").value);
     if (!selectedBread) return;
@@ -107,11 +44,10 @@ function updateInterface() {
 
     let scalingFactor = doughWeight / totalWeight;
     
-    //document.getElementById("bakingInstructions").innerHTML = breadData.Soorten.find(s => s.Type === selectedBread.Type).Bakinstructies;
     updateIngredients(selectedBread, scalingFactor);
     updateFeeding(selectedBread, numFeeds, scalingFactor);
     updateInstructions(breadData.Soorten.find(s => s.Type === selectedBread.Type).Schema);
-   // updateTimeSchedule(selectedBread);
+    updateTimeSchedule(selectedBread);
 }
 
 function updateIngredients(bread, scalingFactor) {
@@ -153,39 +89,57 @@ function updateFeeding(bread, numFeeds, scalingFactor) {
     ).join('');
 }
 
-function updateTimeSchedule(bread) {
-    /*
-    let klaarTijd = new Date(document.getElementById("klaarTijd").value);
-    if (isNaN(klaarTijd)) return;
+function updateTimeSchedule (bread) {
+    const schedule = calculateSchedule();
+    const scheduleHTML = document.getElementById("timeSchedule");
 
-    let eindTijd = new Date(klaarTijd);
-    let startTijd = new Date(klaarTijd);
-    let schemaHTML = "<ul>";
-    
+    scheduleHTML.innerHTML = "";
+    schedule.forEach(step => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${step.time.toLocaleString()} - ${step.title}`;
+        scheduleHTML.appendChild(listItem);
+    });
+}
+
+function calculateSchedule () {
+    const breadDropdown = document.getElementById("breadType");
+    const selectedBread = window.breadData.Broden.find(b => b.Name === breadDropdown.value) || window.breadData.Broden[0];
+    const selectedSchema = window.breadData.Soorten.find(s => s.Type === selectedBread.Type).Schema;
     const feedCount = parseInt(document.getElementById("feedCount").value);
+    const now = new Date();
+ 
+    const schedule = [];
+    let currentTime = new Date(now);
 
-    const stappen = [
-        ["Eten", 0],
-        ["Wachten", bread.Tijden.rusten],
-        ["Bakken", bread.Tijden.bakken],
-        ["Kneden en rijzen", bread.Tijden.rijzen]
-    ];
+    if (selectedBread) {
+        selectedSchema.forEach((step, index) => {
+            let duration = step.tijd;
 
-    for (let i = feedCount; i >= 1; i--) {
-        stappen.push([`${i}x Voeden`, bread.Tijden.voeden]);
+            if (step.short === "Voeden" && feedCount <= 4) {
+                if (selectedBread.Type === "rogge") {
+                    duration *= feedCount;
+                    duration *= -1;
+                } else {
+                    duration *= feedCount;
+                }
+            } else if (step.short === "Voeden" && feedCount === 5) {
+                if (selectedBread.Type === "rogge") {
+                    duration *= -2;
+                } else {
+                    duration *= 2;
+                }
+            }
+
+            schedule.push({
+                time: new Date(currentTime),
+                title: step.short
+            })
+
+            currentTime.setHours(currentTime.getHours() + duration);
+        })
     }
 
-    stappen.forEach(([naam, uren]) => {
-        eindTijd = startTijd;
-        startTijd.setHours(startTijd.getHours() - uren);
-        
-        let startStr = formatShortDate(startTijd);
-        
-        schemaHTML += `<li>${naam}: ${startStr}</li>`;
-    });
-
-    document.getElementById("timeSchedule").innerHTML = schemaHTML + "</ul>";
-    */
+    return schedule;
 }
 
 function formatShortDate(date) {
