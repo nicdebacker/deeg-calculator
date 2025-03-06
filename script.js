@@ -115,7 +115,7 @@ function calculateSchedule () {
         selectedSchema.forEach((step, index) => {
             let duration = step.tijd;
 
-            if (step.short === "Voeden" && feedCount <= 4) {
+            if (step.short === "Starter voeden" && feedCount <= 4) {
                 if (selectedBread.Type === "rogge") {
                     let tmpDuration = duration * feedCount;
                     tmpDuration *= -1;
@@ -131,7 +131,7 @@ function calculateSchedule () {
                     currentTime.setMinutes(currentTime.getMinutes() + minutesToAdd); 
                 }
             } else {
-                if (step.short === "Voeden" && feedCount === 5) {
+                if (step.short === "Starter voeden" && feedCount === 5) {
                     if (selectedBread.Type === "rogge") {
                         duration *= -2;
                         let minutesToAdd = duration * 60;
