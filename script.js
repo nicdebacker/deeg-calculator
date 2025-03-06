@@ -117,25 +117,36 @@ function calculateSchedule () {
 
             if (step.short === "Voeden" && feedCount <= 4) {
                 if (selectedBread.Type === "rogge") {
-                    duration *= feedCount;
-                    duration *= -1;
-                } else {
-                    duration *= feedCount;
+                    let tmpDuration = duration * feedCount;
+                    tmpDuration *= -1;
+                    let minutesToAdd = duration * 60;
+                    currentTime.setMinutes(currentTime.getMinutes() + minutesToAdd);
+                } 
+                for (let i = 1; i <= feedCount; i++) {
+                    schedule.push({
+                        time: formatShortDate(new Date(currentTime)),
+                        title: step.short
+                    });
+                    let minutesToAdd = duration * 60;
+                    currentTime.setMinutes(currentTime.getMinutes() + minutesToAdd); 
                 }
-            } else if (step.short === "Voeden" && feedCount === 5) {
-                if (selectedBread.Type === "rogge") {
-                    duration *= -2;
-                } else {
-                    duration *= 2;
+            } else {
+                if (step.short === "Voeden" && feedCount === 5) {
+                    if (selectedBread.Type === "rogge") {
+                        duration *= -2;
+                        let minutesToAdd = duration * 60;
+                        currentTime.setMinutes(currentTime.getMinutes() + minutesToAdd);
+                    } else {
+                        duration *= 2;
+                    }
                 }
+                schedule.push({
+                    time: formatShortDate(new Date(currentTime)),
+                    title: step.short
+                });
+                let minutesToAdd = Math.abs(duration) * 60;
+                currentTime.setMinutes(currentTime.getMinutes() + minutesToAdd);
             }
-
-            schedule.push({
-                time: new Date(currentTime),
-                title: step.short
-            })
-
-            currentTime.setHours(currentTime.getHours() + duration);
         })
     }
 
