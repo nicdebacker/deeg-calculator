@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("feedCount").addEventListener("change", updateInterface);
     document.getElementById("doughWeight").addEventListener("change", updateInterface);
     //document.getElementById("dayChoice").addEventListener("change", updateInterface);
+    //document.getElementById("hourChoice").addEventListener("change", updateInterface);
 });
 
 function populateDropdowns() {
@@ -101,6 +102,8 @@ function updateFeeding(bread, numFeeds, scalingFactor) {
 function updateTimeSchedule (bread) {
     let schedule = calculateSchedule();
     const scheduleHTML = document.getElementById("timeSchedule");
+    const dayDropdown = document.getElementById("dayChoice");
+    const hourDropdown = document.getElementById("hourChoice");
 
     schedule = validTimeSchedule(schedule); 
 
@@ -110,6 +113,20 @@ function updateTimeSchedule (bread) {
         listItem.textContent = `${formatShortDate(step.time)} - ${step.title}`;
         scheduleHTML.appendChild(listItem);
     });
+    
+    let startTime = new Date(schedule[0].time);
+    const hour = startTime.getHours();
+
+    dayDropdown.innerHTML = "";
+    for (let i = 1; i <= 5; i++) {
+        dayDropdown.innerHTML += `<option value="${startTime}" ${i === 1 ? "selected" : ""}>${startTime.toDateString()}</option>`;
+        startTime.setDay(startTime.getDay() + 1);
+    }
+
+    hourDropdown.innerHTML = "";
+    for (let j = 7; j <= 22; j++)  {
+        hourDropdown.innerHTML += `<option value="${j}" ${j === hour ? "selected" : ""}>${j}:00</option>`;
+    }
 }
 
 function validTimeSchedule(schedule) {
