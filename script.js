@@ -151,7 +151,7 @@ function isForbiddenTime (date) {
 
     console.log(d);
     console.log(day);
-    console.loag(hour);
+    console.log(hour);
 
     if (day >= 1 && day <= 4) { // maandag t/m donderdag
         return hour < 7 || hour >= 21;
