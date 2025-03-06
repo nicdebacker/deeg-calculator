@@ -123,18 +123,20 @@ function updateTimeSchedule (startingDate, startingTime) {
         scheduleHTML.appendChild(listItem);
     });
     
-    let startTime = new Date(schedule[0].time);
-    const hour = startTime.getHours();
+    if (startingDate === undefined) {
+        let startTime = new Date(schedule[0].time);
+        const hour = startTime.getHours();
 
-    dayDropdown.innerHTML = "";
-    for (let i = 1; i <= 5; i++) {
-        dayDropdown.innerHTML += `<option value="${startTime}" ${i === 1 ? "selected" : ""}>${formatter.format(startTime)}</option>`;
-        startTime.setHours(startTime.getHours() + 24);
-    }
+        dayDropdown.innerHTML = "";
+        for (let i = 1; i <= 5; i++) {
+            dayDropdown.innerHTML += `<option value="${startTime}" ${i === 1 ? "selected" : ""}>${formatter.format(startTime)}</option>`;
+            startTime.setHours(startTime.getHours() + 24);
+        }
 
-    hourDropdown.innerHTML = "";
-    for (let j = 7; j <= 22; j++)  {
-        hourDropdown.innerHTML += `<option value="${j}" ${j === hour ? "selected" : ""}>${j}:00</option>`;
+        hourDropdown.innerHTML = "";
+        for (let j = 7; j <= 22; j++)  {
+            hourDropdown.innerHTML += `<option value="${j}" ${j === hour ? "selected" : ""}>${j}:00</option>`;
+        }
     }
 }
 
