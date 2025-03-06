@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("feedCount").addEventListener("change", updateInterface);
     document.getElementById("doughWeight").addEventListener("change", updateInterface);
     document.getElementById("dayChoice").addEventListener("change", updateBakeSchedule);
-    document.getElementById("hourChoice").addEventListener("change", updateBakeSchedule;
+    document.getElementById("hourChoice").addEventListener("change", updateBakeSchedule);
 });
 
 function populateDropdowns() {
