@@ -151,11 +151,11 @@ function validTimeSchedule(schedule) {
   
         // Controleer of de tijd verboden is
         if (isForbiddenTime(entry.time)) {
-        console.log("verboden tijdstip");
+        //console.log("verboden tijdstip");
           hasForbiddenTime = true;
           break; // Stop de loop als er een verboden tijd is gevonden
         }
-        console.log("toegelaten tijdstip");
+        //console.log("toegelaten tijdstip");
       }
   
       // Als er een verboden tijd is, voeg een uur toe aan alle tijden
@@ -174,15 +174,15 @@ function isForbiddenTime (date) {
     const day = d.getDay(); // 0 = zondag, 6 = zaterdag
     const hour = d.getHours();
 
-    console.log(day);
-    console.log(hour);
+    //console.log(day);
+    //console.log(hour);
     if (day >= 1 && day <= 4) { // maandag t/m donderdag
         return hour < 7 || hour >= 22;
     } else if (day === 5) { // vrijdag
         return hour < 7 || hour >= 23;
     } else if (day === 6) { //zaterdag
         return hour < 8 || hour >= 23;
-    } else if (day === 7) { // zondag
+    } else if (day === 0) { // zondag
         return hour < 8 || hour >= 22;
     }
     return false;
