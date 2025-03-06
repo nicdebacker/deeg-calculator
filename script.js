@@ -48,7 +48,7 @@ function updateInterface() {
     updateIngredients(selectedBread, scalingFactor);
     updateFeeding(selectedBread, numFeeds, scalingFactor);
     updateInstructions(breadData.Soorten.find(s => s.Type === selectedBread.Type).Schema);
-    updateTimeSchedule(selectedBread);
+    updateTimeSchedule();
 }
 
 function updateIngredients(bread, scalingFactor) {
@@ -103,11 +103,11 @@ function updateBakeSchedule () {
     const dayDropdown = document.getElementById("dayChoice");
     const hourDropdown = document.getElementById("hourChoice");
 
-    calculateSchedule(dayDropdown.value, hourDropdown.value);
+    updateTimeSchedule(dayDropdown.value, hourDropdown.value);
 }
 
-function updateTimeSchedule (bread) {
-    let schedule = calculateSchedule();
+function updateTimeSchedule (startingDate, startingTime) {
+    let schedule = calculateSchedule(startingDate, startingTime);
     const scheduleHTML = document.getElementById("timeSchedule");
     const dayDropdown = document.getElementById("dayChoice");
     const hourDropdown = document.getElementById("hourChoice");
@@ -151,7 +151,6 @@ function validTimeSchedule(schedule) {
   
         // Controleer of de tijd verboden is
         if (isForbiddenTime(entry.time)) {
-          console.log("true");
           hasForbiddenTime = true;
           break; // Stop de loop als er een verboden tijd is gevonden
         }
