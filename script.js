@@ -78,15 +78,24 @@ function updateFeeding(bread, numFeeds, scalingFactor) {
     let feedList = document.getElementById("feedList");
     let starterAmount = bread.Ingredients.Starter * scalingFactor;
     let voedFactor = breadData.Settings.VoedFactor;
+    let dubbelVoedFactor = breadData.Settings.DubbelVoedFactor;
     let feedAmounts = [starterAmount/voedFactor];
     
-    for (let i = 1; i < numFeeds; i++) {
-        feedAmounts.push(feedAmounts[i - 1] / voedFactor);
+    feedList.innerHTML = "";
+    if (numFeeds <= 4) {
+        for (let i = 1; i < numFeeds; i++) {
+            feedAmounts.push(feedAmounts[i - 1] / voedFactor);
+        }
+        
+        feedList.innerHTML = feedAmounts.map((amount, index) => 
+            `<li>${index + 1}x Voeden: ${Math.round(amount)} g</li>`
+        ).join('');
+    } else if (numFeeds === 5) {
+        const li = document.createElement("li");
+        li.textContent = `1x Voeden: ${Math.round(starterAmount/dubbelVoedFactor)} g`;
+        feedList.appendChild(li);
     }
     
-    feedList.innerHTML = feedAmounts.map((amount, index) => 
-        `<li>${index + 1}x Voeden: ${Math.round(amount)} g</li>`
-    ).join('');
 }
 
 function updateTimeSchedule (bread) {
