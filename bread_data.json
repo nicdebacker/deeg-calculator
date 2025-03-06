@@ -102,7 +102,7 @@
                 {
                     "instructie": "Deeg op de werkbank leggen en verdelen in juiste hoeveelheden voor brood (650 gram) of pistolets (200 gram). Een half uur laten rusten en dan op spanning brengen.",
                     "short": "Bollen",
-                    "tijd": 1
+                    "tijd": 0.5
                 },
                 {
                     "instructie": "De broden in de rijsmandjes plaatsen en zo'n 6 tot 12 uur in de ijskast laten rusten.",
@@ -117,6 +117,11 @@
                 {
                     "instructie": "Een uur laten afkoelen alvorens te snijden.",
                     "short": "Koelen",
+                    "tijd": 1
+                },
+                {
+                    "instructie": "Smullen maar!.",
+                    "short": "Eten",
                     "tijd": 1
                 }
             ]
@@ -142,12 +147,12 @@
                 {
                     "instructie": "Een bakvorm inspuiten met anti-kleef spray en het deeg er egaal in verdelen. Gebruik genoeg lauw water om een mooi egaal bovenvlak te krijgen.",
                     "short": "Vormen",
-                    "tijd": 0.5
+                    "tijd": 0.2
                 },
                 {
                     "instructie": "Het deeg zo'n 2-3 uur in de warmtekast bij 26°C laten rijzen tot er kleine gaatjes in het deeg verschijnen.",
                     "short": "Rusten",
-                    "tijd": 3
+                    "tijd": 2.5
                 },
                 {
                     "instructie": "Bak 30 minuten op 240°C en 20 minuten op 210°C. Plaats wat water in de oven om uitdrogen te vermijden." ,
@@ -155,9 +160,14 @@
                     "tijd": 1
                 },
                 {
-                    "instructie": "Tussen 24 en 48 uur wachten om te eten. Het vocht van de zaden moet zich egaal in het brood verdelen.",
-                    "short": "Koelen",
-                    "tijd": 24
+                    "instructie": "Broden met 100% rogge minimaal 48 tot 72 uur laten rusten. Het vocht van de zaden moet zich egaal in het brood verdelen.",
+                    "short": "Drogen",
+                    "tijd": 48
+                },
+                {
+                    "instructie": "Smullen maar!.",
+                    "short": "Eten",
+                    "tijd": 1
                 }
             ]
         },
@@ -175,19 +185,19 @@
                     "tijd": 0.2
                 },
                 {
-                    "instructie": "Het deeg zo'n 3 uur in de warmtekast bij 21°C laten rijzen tot er kleine gaatjes in het deeg verschijnen.",
+                    "instructie": "Het deeg zo'n 2-3 uur in de warmtekast bij 21°C laten rijzen tot er kleine gaatjes in het deeg verschijnen.",
                     "short": "Rusten",
-                    "tijd": 3
+                    "tijd": 2.5
                 },
                 {
                     "instructie": "Het deeg verdelen en door het meel rollen tot een mooie bol.",
                     "short": "Bollen",
-                    "tijd": 0.5
+                    "tijd": 0.2
                 },
                 {
                     "instructie": "Plaats de bol in een rijsmandje met de bolle kant naar onder. Goed inbloemen, want rogge plakt. Laat een half uur rusten.",
                     "short": "Rusten",
-                    "tijd": 3
+                    "tijd": 0.5
                 },
                 {
                     "instructie": "Leg het brood op de bakplaat en veeg het meel weg. 30 minuten op 240°C en daarna nog 20 minuten op 210°C. Plaats wat water in de oven om uitdrogen te vermijden." ,
@@ -196,8 +206,13 @@
                 },
                 {
                     "instructie": "Broden met 100% rogge minimaal 48 tot 72 uur laten rusten.",
-                    "short": "Koelen",
-                    "tijd": 24
+                    "short": "Drogen",
+                    "tijd": 48
+                },
+                {
+                    "instructie": "Smullen maar!.",
+                    "short": "Eten",
+                    "tijd": 1
                 }
             ]
         }   
