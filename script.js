@@ -147,10 +147,14 @@ function isForbiddenTime (date) {
     const day = d.getDay(); // 0 = zondag, 6 = zaterdag
     const hour = d.getHours();
   
-    if (day >= 0 && day <= 4) { // Zondag t/m donderdag
-      return hour < 7 || hour >= 22;
-    } else if (day === 5 || day === 6) { // Vrijdag en zaterdag
-      return hour < 8 || hour >= 23;
+    if (day >= 1 && day <= 4) { // maandag t/m donderdag
+        return hour < 7 || hour >= 22;
+    } else if (day === 5) { // vrijdag
+        return hour < 7 || hour >= 23;
+    } else if (day === 6) { //zaterdag
+        return hour < 8 || hour >= 23;
+    } else if (day === 7) { // zondag
+        return hour < 8 || hour >= 22;
     }
     return false;
 }
