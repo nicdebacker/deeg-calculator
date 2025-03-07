@@ -1,6 +1,7 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #ffffff;
+    background-color: #1a1a1a;
+    color:#ffffff;
     margin: 0;
     padding: 20px;
     text-align: center;
@@ -40,7 +41,8 @@ ul {
 
 li {
     font-size: 1.2em;
-    background-color: #ffffff;
+    background-color: #e0e0e0;
+    color:#222222;
     padding: 10px;
     margin: 5px 0;
     border-radius: 5px;
@@ -52,7 +54,7 @@ li {
 }
 
 .section {
-  background-color: #f0f0f0; /* Grijze achtergrond voor de secties */
+  background-color: #808080; /* Grijze achtergrond voor de secties */
   border: 1px solid #ccc; /* Dunne rand om de secties */
   border-radius: 8px; /* Ronde hoeken */
   padding: 16px; /* Ruimte binnen de secties */
@@ -61,6 +63,7 @@ li {
 
 h2 {
   margin-top: 0; /* Geen extra ruimte boven de koppen */
+  color:#f0f0f0;
 }
 
 
