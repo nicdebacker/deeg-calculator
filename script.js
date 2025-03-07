@@ -174,7 +174,7 @@ function validTimeSchedule(schedule) {
                         //zijn er nog volgende stappen
                         if (i < schedule.length - 1) {
                             for (let m=i+1; m < schedule.length; m++) {
-                                schedule[m].time.setMinutes(schedule[m].getMinutes() + aanpassing);
+                                schedule[m].time.setMinutes(schedule[m].time.getMinutes() + aanpassing);
                             }
                         }
                     }
@@ -193,7 +193,7 @@ function validTimeSchedule(schedule) {
                             //zijn er nog volgende stappen
                             if (i < schedule.length - 1) {
                                 for (let m=i+1; m < schedule.length; m++) {
-                                    schedule[m].time.setMinutes(schedule[m].getMinutes() + aanpassing);
+                                    schedule[m].time.setMinutes(schedule[m].time.getMinutes() + aanpassing);
                                 }
                             }
                         }
@@ -219,7 +219,7 @@ function validTimeSchedule(schedule) {
                             //zijn er nog volgende stappen
                             if (i < schedule.length - 1) {
                                 for (let m=i+1; m < schedule.length; m++) {
-                                    schedule[m].time.setMinutes(schedule[m].getMinutes() + aanpassing);
+                                    schedule[m].time.setMinutes(schedule[m].time.getMinutes() + aanpassing);
                                 }
                             }
                         }
@@ -238,7 +238,7 @@ function validTimeSchedule(schedule) {
                                 //zijn er nog volgende stappen
                                 if (i < schedule.length - 1) {
                                     for (let m=i+1; m < schedule.length; m++) {
-                                        schedule[m].time.setMinutes(schedule[m].getMinutes() + aanpassing);
+                                        schedule[m].time.setMinutes(schedule[m].time.getMinutes() + aanpassing);
                                     }
                                 }
                             }
@@ -272,6 +272,11 @@ function validTimeSchedule(schedule) {
         return origSchedule;
     }
   }
+
+
+function calculateDeviation (schedule, startPosition, time, deviation) {
+
+}
 
 function isForbiddenTime (date) {
     let d = new Date(date);
