@@ -242,7 +242,7 @@ function calculateSchedule (startingDate, startingTime) {
         now.setMinutes(30,0,0);
     } else if (now.getMinutes() < 45) {
         now.setMinutes(45,0,0);
-    } else 
+    } else {
         now.setHours(now.getHours() + 1);
         now.setMinutes(0,0,0);
     }
