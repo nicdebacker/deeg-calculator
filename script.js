@@ -165,7 +165,7 @@ function validTimeSchedule(schedule) {
             if (entry.afwijking > 0) {
                 console.log(`Er is een afwijking mogelijk (${entry.afwijking})`);
                 let numLoops = entry.afwijking * 4;
-                let k = 1;    
+                let k = 0;    
 
                 while (hasForbiddenTime && k < numLoops) {
                     entry.time.setMinutes(entry.time.getMinutes() - 15);
@@ -175,7 +175,8 @@ function validTimeSchedule(schedule) {
                 }
 
                 if (hasForbiddenTime) {
-                    k = 1;
+                    k = 0;
+                    console.log(`De originele tijd was (${origTime})`);
                     entry.time = origTime;
                     while (hasForbiddenTime && k < numLoops) {
                         entry.time.setMinutes(entry.time.getMinutes() + 15);
@@ -193,7 +194,7 @@ function validTimeSchedule(schedule) {
                 if (prevEntry.afwijking > 0) {
                     console.log(`Er is een afwijking mogelijk door de vorige stap ${prevEntry.title} (${prevEntry.afwijking})`);
                     let numLoops = prevEntry.afwijking * 4;
-                    let k = 1;    
+                    let k = 0;    
 
                     while (hasForbiddenTime && k < numLoops) {
                         entry.time.setMinutes(entry.time.getMinutes() - 15);
@@ -203,7 +204,8 @@ function validTimeSchedule(schedule) {
                     }
 
                     if (hasForbiddenTime) {
-                        k = 1;
+                        k = 0;
+                        console.log(`De originele tijd was (${origTime})`);
                         entry.time = origTime;
                         while (hasForbiddenTime && k < numLoops) {
                             entry.time.setMinutes(entry.time.getMinutes() + 15);
@@ -215,9 +217,10 @@ function validTimeSchedule(schedule) {
                 }
             }
         }
-        
+
         console.log(`Status verboden: (${hasForbiddenTime})`);
         if (hasForbiddenTime) {
+            console.log(`De originele tijd was (${origTime})`);
             entry.time = origTime;
             break; // Stop de loop als er een verboden tijd is gevonden
         }
