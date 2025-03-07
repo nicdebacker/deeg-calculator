@@ -177,7 +177,7 @@ function validTimeSchedule(schedule) {
                 if (hasForbiddenTime) {
                     k = 0;
                     console.log(`De originele tijd was (${origTime})`);
-                    entry.time = origTime;
+                    entry.time = new Date(origTime);
                     while (hasForbiddenTime && k < numLoops) {
                         entry.time.setMinutes(entry.time.getMinutes() + 15);
                         console.log(`Nieuwe tijd (${entry.time})`);
@@ -206,7 +206,7 @@ function validTimeSchedule(schedule) {
                     if (hasForbiddenTime) {
                         k = 0;
                         console.log(`De originele tijd was (${origTime})`);
-                        entry.time = origTime;
+                        entry.time = new Date(origTime);
                         while (hasForbiddenTime && k < numLoops) {
                             entry.time.setMinutes(entry.time.getMinutes() + 15);
                             console.log(`Nieuwe tijd (${entry.time})`);
@@ -221,7 +221,7 @@ function validTimeSchedule(schedule) {
         console.log(`Status verboden: (${hasForbiddenTime})`);
         if (hasForbiddenTime) {
             console.log(`De originele tijd was (${origTime})`);
-            entry.time = origTime;
+            entry.time = new Date(origTime);
             break; // Stop de loop als er een verboden tijd is gevonden
         }
       }
