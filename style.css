@@ -20,7 +20,6 @@ h1 {
 select, input {
     width: 100%;
     padding: 12px;
-    margin: 10px 0;
     font-size: 1.2em;
     background-color: white;
     border: 2px solid #ccc;
