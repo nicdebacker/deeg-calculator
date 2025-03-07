@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    color:#333333;
+    background-color: #ffffff;
+    color:#222222;
     margin: 0;
     padding: 10px;
     text-align: center;
@@ -39,8 +39,8 @@ ul {
 
 li {
     font-size: 1.2em;
-    background-color: #f5f5f5;
-    color:#333333;
+    background-color: #ffffff;
+    color:#222222;
     padding: 10px;
     margin: 5px 0;
     text-align: left;
@@ -51,7 +51,7 @@ li {
 }
 
 .section {
-  background-color: #ffffff; /* Grijze achtergrond voor de secties */
+  background-color: #f5f5f5; /* Grijze achtergrond voor de secties */
   padding: 16px; /* Ruimte binnen de secties */
   margin: 16px 0; /* Ruimte tussen de secties */
 }
