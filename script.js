@@ -163,11 +163,11 @@ function validTimeSchedule(schedule) {
             hasForbiddenTime = true;
             //kijken of er een afwijking is en we zo toch terug in goede time komen
             if (entry.afwijking > 0) {
-                let numLoops = entry.afwijking / 4;
+                let numLoops = entry.afwijking * 4;
                 let i = 1;    
 
                 while (hasForbiddenTime && i < numLoops) {
-                    entry.time -= 0.25;
+                    entry.time.setMinutes(entry.time.getMinutes() - 15);
                     hasForbiddenTime = isForbiddenTime(entry.time);
                     i++;
                 }
@@ -176,7 +176,7 @@ function validTimeSchedule(schedule) {
                     i = 1;
                     entry.time = origTime;
                     while (hasForbiddenTime && i < numLoops) {
-                        entry.time += 0.25;
+                        entry.time.setMinutes(entry.time.getMinutes() + 15);
                         hasForbiddenTime = isForbiddenTime(entry.time);
                         i++;
                     }
@@ -194,7 +194,7 @@ function validTimeSchedule(schedule) {
         iLoops++;
         console.log(`We tellen er een kwartier bij (${schedule[0].time}`);
         for (let i = 0; i < schedule.length; i++) {
-          schedule[i].time.setMinutes(schedule[i].time.getMinutes() + 0.25);
+          schedule[i].time.setMinutes(schedule[i].time.getMinutes() + 15);
         }
         console.log(`We hebben er een kwartier bijgeteld (${schedule[0].time}`);
       }
