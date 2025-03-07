@@ -87,42 +87,50 @@
                 {
                     "instructie": "Desem voeden. Dat kan in meerdere stappen. Elke stap duurt zo'n 4 uur in de warmtekast bij 26 °C. Je kan de tijd verlengen door de verhouding starter:water:bloem aan te passen van 1:1:1 naar 1:2:2.",
                     "short": "Starter voeden",
-                    "tijd": 4
+                    "tijd": 4,
+                    "afwijking": 0
                 },
                 {
                     "instructie": "Alle ingrediënten in de spiraalmixer en 20 minuten laten draaien. Als je zaden of noden toevoegt, dan enkel in laatste 3 minuten.",
                     "short": "Deeg kneden",
-                    "tijd": 0.5
+                    "tijd": 0.5,
+                    "afwijking": 0
                 },
                 {
                     "instructie": "Deeg in de warmtekast plaatsen en laten rijzen tussen de 8 en 12 uur.",
                     "short": "Deeg laten rijzen",
-                    "tijd": 12
+                    "tijd": 10,
+                    "afwijking": 2
                 },
                 {
                     "instructie": "Deeg op de werkbank leggen en verdelen in juiste hoeveelheden voor brood (650 gram) of pistolets (200 gram). Een half uur laten rusten en dan op spanning brengen.",
                     "short": "Deeg verdelen en opbollen",
-                    "tijd": 0.5
+                    "tijd": 0.5,
+                    "afwijking": 0
                 },
                 {
                     "instructie": "De broden in de rijsmandjes plaatsen en zo'n 6 tot 12 uur in de ijskast laten rusten.",
                     "short": "Rusten in de ijskast",
-                    "tijd": 12
+                    "tijd": 10,
+                    "afwijking": 2
                 },
                 {
                     "instructie": "Het brood bakken. Zet de pot in de oven en verwarm op 250°C. Bak brood voor 25 minuten. Neem het deksel eraf en bak nog 25 minuten tegen 225°C. Bij Ciabatta 20 minuten op 240°C en nog 10 minuten zonder deksel op 225°C. Bij pistolets 20 minuten in stoomoven (stoom op lage stand) op 235°C." ,
                     "short": "Bakken",
-                    "tijd": 1
+                    "tijd": 1,
+                    "afwijking": 0
                 },
                 {
                     "instructie": "Een uur laten afkoelen alvorens te snijden.",
                     "short": "Brood laten afkoelen",
-                    "tijd": 1
+                    "tijd": 1,
+                    "afwijking": 0
                 },
                 {
                     "instructie": "Smullen maar!",
                     "short": "Aan tafel",
-                    "tijd": 1
+                    "tijd": 1,
+                    "afwijking": 0
                 }
             ]
         },
@@ -132,42 +140,50 @@
                 {
                     "instructie": "Doe de zaden in een kom en voeg er evenveel water aan toe. Laat 24 uur weken tot al het water door de zaden is opgenomen.",
                     "short": "Zaden weken",
-                    "tijd": 24
+                    "tijd": 24,
+                    "afwijking": 0
                 },
                 {
                     "instructie": "Desem voeden. Dat kan in meerdere stappen. Elke stap duurt zo'n 4 uur in de warmtekast bij 26 °C. Je kan de tijd verlengen door de verhouding starter:water:bloem aan te passen van 1:1:1 naar 1:2:2.",
                     "short": "Starter voeden",
-                    "tijd": 3
+                    "tijd": 3,
+                    "afwijking": 0
                 },
                 {
                     "instructie": "Alle ingrediënten in een kom doen en met de hand zo'n 5 tot 10 minuten door elkaar mengen (zonder te kneden) tot er een egale deeg ontstaat. Zorg dat het water lauw tot warm is.",
                     "short": "Deeg mengen",
-                    "tijd": 0.25
+                    "tijd": 0.25,
+                    "afwijking": 0
                 },
                 {
                     "instructie": "Een bakvorm inspuiten met anti-kleef spray en het deeg er egaal in verdelen. Gebruik genoeg lauw water om een mooi egaal bovenvlak te krijgen.",
                     "short": "Deeg in bakvorm",
-                    "tijd": 0.25
+                    "tijd": 0.25,
+                    "afwijking": 0
                 },
                 {
                     "instructie": "Het deeg zo'n 2-3 uur in de warmtekast bij 26°C laten rijzen tot er kleine gaatjes in het deeg verschijnen.",
                     "short": "Deeg laten rijzen",
-                    "tijd": 2.5
+                    "tijd": 2.5,
+                    "afwijking": 0
                 },
                 {
                     "instructie": "Bak 30 minuten op 240°C en 20 minuten op 210°C. Plaats wat water in de oven om uitdrogen te vermijden." ,
                     "short": "Bakken",
-                    "tijd": 1
+                    "tijd": 1,
+                    "afwijking": 0
                 },
                 {
                     "instructie": "Broden met 100% rogge minimaal 48 tot 72 uur laten rusten. Het vocht van de zaden moet zich egaal in het brood verdelen.",
                     "short": "Brood laten rusten",
-                    "tijd": 48
+                    "tijd": 48,
+                    "afwijking": 0
                 },
                 {
                     "instructie": "Smullen maar!",
                     "short": "Aan tafel",
-                    "tijd": 1
+                    "tijd": 1,
+                    "afwijking": 0
                 }
             ]
         },
@@ -177,42 +193,50 @@
                 {
                     "instructie": "Desem voeden. Dat kan in meerdere stappen. Elke stap duurt zo'n 4 uur in de warmtekast bij 26 °C. Je kan de tijd verlengen door de verhouding starter:water:bloem aan te passen van 1:1:1 naar 1:2:2.",
                     "short": "Starter voeden",
-                    "tijd": 3
+                    "tijd": 3,
+                    "afwijking": 0
                 },
                 {
                     "instructie": "Alle ingrediënten in een kom doen en met de hand zo'n 5 tot 10 minuten door elkaar mengen (zonder te kneden) tot er een egale deeg ontstaat. Zorg dat het water lauw tot warm is.",
                     "short": "Deeg mengen",
-                    "tijd": 0.25
+                    "tijd": 0.25,
+                    "afwijking": 0
                 },
                 {
                     "instructie": "Het deeg zo'n 2-3 uur in de warmtekast bij 21°C laten rijzen tot er kleine gaatjes in het deeg verschijnen.",
                     "short": "Deeg laten rijzen",
-                    "tijd": 2.5
+                    "tijd": 2.5,
+                    "afwijking": 0
                 },
                 {
                     "instructie": "Het deeg verdelen en door het meel rollen tot een mooie bol.",
                     "short": "Deeg verdelen en opbollen",
-                    "tijd": 0.25
+                    "tijd": 0.25,
+                    "afwijking": 0
                 },
                 {
                     "instructie": "Plaats de bol in een rijsmandje met de bolle kant naar onder. Goed inbloemen, want rogge plakt. Laat een half uur rusten.",
                     "short": "Deeg laten rijzen",
-                    "tijd": 0.5
+                    "tijd": 0.5,
+                    "afwijking": 0
                 },
                 {
                     "instructie": "Leg het brood op de bakplaat en veeg het meel weg. 30 minuten op 240°C en daarna nog 20 minuten op 210°C. Plaats wat water in de oven om uitdrogen te vermijden." ,
                     "short": "Bakken",
-                    "tijd": 1
+                    "tijd": 1,
+                    "afwijking": 0
                 },
                 {
                     "instructie": "Broden met 100% rogge minimaal 48 tot 72 uur laten rusten.",
                     "short": "Brood laten rusten",
-                    "tijd": 48
+                    "tijd": 48,
+                    "afwijking": 0
                 },
                 {
                     "instructie": "Smullen maar!",
                     "short": "Aan tafel",
-                    "tijd": 1
+                    "tijd": 1,
+                    "afwijking": 0
                 }
             ]
         }   
