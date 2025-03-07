@@ -24,7 +24,6 @@ select, input {
     font-size: 1.2em;
     background-color: white;
     border: 2px solid #ccc;
-    border-radius: 5px;
     appearance: none;
     -webkit-appearance: none;
 }
