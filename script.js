@@ -159,7 +159,7 @@ function validTimeSchedule(schedule) {
   
         // Controleer of de tijd verboden is
         if (isForbiddenTime(entry.time)) {
-            console.log(`Dit is een verboden tijd (${entry.time}) voor ${entry.short}`);
+            console.log(`Dit is een verboden tijd (${entry.time}) voor ${entry.title}`);
             hasForbiddenTime = true;
             //kijken of er een afwijking is en we zo toch terug in goede time komen
             if (entry.afwijking > 0) {
@@ -194,7 +194,7 @@ function validTimeSchedule(schedule) {
         iLoops++;
         console.log(`We tellen er een kwartier bij (${schedule[0].time}`);
         for (let i = 0; i < schedule.length; i++) {
-          schedule[i].time.setHours(schedule[i].time.getHours() + 0.25);
+          schedule[i].time.setMinutes(schedule[i].time.getMinutes() + 0.25);
         }
         console.log(`We hebben er een kwartier bijgeteld (${schedule[0].time}`);
       }
