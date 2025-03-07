@@ -114,7 +114,7 @@ function updateTimeSchedule (startingDate, startingTime) {
     const opties = { weekday: 'long', day: 'numeric', month: 'long' };
     const formatter = new Intl.DateTimeFormat('nl-NL', opties);
 
-   // schedule = validTimeSchedule(schedule); 
+    schedule = validTimeSchedule(schedule); 
 
     scheduleHTML.innerHTML = "";
     schedule.forEach(step => {
@@ -143,31 +143,66 @@ function updateTimeSchedule (startingDate, startingTime) {
 function validTimeSchedule(schedule) {
     // Controleer op verboden tijden
     let hasForbiddenTime = true;
+    let origSchedule = schedule;
+    let maxLoops = 24/4;
+    let iLoops = 1;
   
-    while (hasForbiddenTime) {
+    while (hasForbiddenTime && iLoops < maxLoops) {
         hasForbiddenTime = false;
   
       // Loop door alle tijden in het schema
+      // met een maximum van 24 uur verschuiven
+      // als 
       for (let i = 0; i < schedule.length; i++) {
         const entry = schedule[i];
   
         // Controleer of de tijd verboden is
         if (isForbiddenTime(entry.time)) {
-        //console.log("verboden tijdstip");
-          hasForbiddenTime = true;
-          break; // Stop de loop als er een verboden tijd is gevonden
+            hasForbiddenTime = true;
+            //kijken of er een afwijking is en we zo toch terug in goede time komen
+            if (entry.afwijking > 0) {
+                let numLoops = entry.afwijking / 4;
+                let origTime = entry.time;
+                let i = 1;    
+
+                while (hasForbiddenTime && i < numLoops) {
+                    entry.time -= 0.25;
+                    hasForbiddenTime = isForbiddenTime(entry.time);
+                    i++;
+                }
+
+                if (hasForbiddenTime) {
+                    i = 1;
+                    entry.time = origTime;
+                    while (hasForbiddenTime && i < numLoops) {
+                        entry.time += 0.25;
+                        hasForbiddenTime = isForbiddenTime(entry.time);
+                        i++;
+                    }
+                }
+            }
         }
-        //console.log("toegelaten tijdstip");
+        if (hasForbiddenTime) {
+            entry.time = origTime;
+            break; // Stop de loop als er een verboden tijd is gevonden
+        }
       }
   
-      // Als er een verboden tijd is, voeg een uur toe aan alle tijden
+      // Als er een verboden tijd is, voeg een kwartier toe aan alle tijden
       if (hasForbiddenTime) {
+        iLoops++;
         for (let i = 0; i < schedule.length; i++) {
-          schedule[i].time.setHours(schedule[i].time.getHours() + 1);
+          schedule[i].time.setHours(schedule[i].time.getHours() + 0.25);
         }
       }
     }
-    return schedule;
+
+    if (iLoops < maxLoops) {
+        return schedule;
+    } else {
+        // na 24 uur opschuiven is er geen geldig schema gevonden, geef het originele schema terug
+        return origSchedule;
+    }
   }
 
 function isForbiddenTime (date) {
@@ -226,7 +261,8 @@ function calculateSchedule (startingDate, startingTime) {
                 for (let i = 1; i <= feedCount; i++) {
                     schedule.push({
                         time: new Date(currentTime),
-                        title: step.short
+                        title: step.short,
+                        afwijking: step.afwijking
                     });
                     let minutesToAdd = duration * 60;
                     currentTime.setMinutes(currentTime.getMinutes() + minutesToAdd); 
@@ -243,7 +279,8 @@ function calculateSchedule (startingDate, startingTime) {
                 }
                 schedule.push({
                     time: new Date(currentTime),
-                    title: step.short
+                    title: step.short,
+                    afwijking: step.afwijking
                 });
                 let minutesToAdd = Math.abs(duration) * 60;
                 currentTime.setMinutes(currentTime.getMinutes() + minutesToAdd);
