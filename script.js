@@ -155,7 +155,7 @@ function validTimeSchedule(schedule) {
       // als 
       for (let i = 0; i < schedule.length; i++) {
         const entry = schedule[i];
-        let origTime = entry.time;
+        const origTime = entry.time;
   
         // Controleer of de tijd verboden is
         if (isForbiddenTime(entry.time)) {
