@@ -114,7 +114,7 @@ function updateTimeSchedule (startingDate, startingTime) {
     const opties = { weekday: 'long', day: 'numeric', month: 'long' };
     const formatter = new Intl.DateTimeFormat('nl-NL', opties);
 
-    //schedule = validTimeSchedule(schedule); 
+    schedule = validTimeSchedule(schedule); 
 
     scheduleHTML.innerHTML = "";
     schedule.forEach(step => {
@@ -197,6 +197,10 @@ function validTimeSchedule(schedule) {
       }
     }
 
+    console.log(`de hoeveelste loop: ${iLoops}`);
+    console.log(`is het een verboden schema: ${hasForbiddenTime}`);
+    console.log(`het schema: ${schedule}`);
+    
     if (iLoops < maxLoops) {
         return schedule;
     } else {
@@ -233,8 +237,12 @@ function calculateSchedule (startingDate, startingTime) {
     
     let now = new Date();
     if (now.getMinutes() < 15) {
-        now.setMinutes(0,0,0);
-    } else {
+        now.setMinutes(15,0,0);
+    } else if (now.getMinutes() < 30) {
+        now.setMinutes(30,0,0);
+    } else if (now.getMinutes() < 45) {
+        now.setMinutes(45,0,0);
+    } else 
         now.setHours(now.getHours() + 1);
         now.setMinutes(0,0,0);
     }
