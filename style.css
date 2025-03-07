@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
+    background-color: #ffffff;
     margin: 0;
     padding: 20px;
     text-align: center;
@@ -49,6 +49,18 @@ li {
 
 .ingredient-amount {
     font-weight: bold;
+}
+
+.section {
+  background-color: #f0f0f0; /* Grijze achtergrond voor de secties */
+  border: 1px solid #ccc; /* Dunne rand om de secties */
+  border-radius: 8px; /* Ronde hoeken */
+  padding: 16px; /* Ruimte binnen de secties */
+  margin: 16px 0; /* Ruimte tussen de secties */
+}
+
+h2 {
+  margin-top: 0; /* Geen extra ruimte boven de koppen */
 }
 
 
