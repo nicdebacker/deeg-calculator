@@ -144,7 +144,7 @@ function validTimeSchedule(schedule) {
     // Controleer op verboden tijden
     let hasForbiddenTime = true;
     let origSchedule = schedule;
-    let maxLoops = 24/4;
+    let maxLoops = 24*4;
     let iLoops = 1;
   
     while (hasForbiddenTime && iLoops < maxLoops) {
