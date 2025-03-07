@@ -249,7 +249,6 @@ function validTimeSchedule(schedule) {
             }
         }
 
-        console.log(`Status verboden: (${hasForbiddenTime})`);
         if (hasForbiddenTime) {
             entry.time = new Date(origTime);
             break; // Stop de loop als er een verboden tijd is gevonden
