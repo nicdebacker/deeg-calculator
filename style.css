@@ -54,7 +54,7 @@ li {
 }
 
 .section {
-  background-color: #bfbfbf; /* Grijze achtergrond voor de secties */
+  background-color: #e0e0e0; /* Grijze achtergrond voor de secties */
   border: 1px solid #ccc; /* Dunne rand om de secties */
   border-radius: 8px; /* Ronde hoeken */
   padding: 16px; /* Ruimte binnen de secties */
@@ -63,7 +63,7 @@ li {
 
 h3 {
   margin-top: 0; /* Geen extra ruimte boven de koppen */
-  color:#ffffff;
+  color:#222222;
 }
 
 
