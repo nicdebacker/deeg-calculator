@@ -163,11 +163,13 @@ function validTimeSchedule(schedule) {
             hasForbiddenTime = true;
             //kijken of er een afwijking is en we zo toch terug in goede time komen
             if (entry.afwijking > 0) {
+                console.log(`Er is een afwijking mogelijk (${entry.afwijking})`);
                 let numLoops = entry.afwijking * 4;
                 let i = 1;    
 
                 while (hasForbiddenTime && i < numLoops) {
                     entry.time.setMinutes(entry.time.getMinutes() - 15);
+                    console.log(`Nieuwe tijd (${entry.time})`);
                     hasForbiddenTime = isForbiddenTime(entry.time);
                     i++;
                 }
@@ -177,12 +179,14 @@ function validTimeSchedule(schedule) {
                     entry.time = origTime;
                     while (hasForbiddenTime && i < numLoops) {
                         entry.time.setMinutes(entry.time.getMinutes() + 15);
+                        console.log(`Nieuwe tijd (${entry.time})`);
                         hasForbiddenTime = isForbiddenTime(entry.time);
                         i++;
                     }
                 }
             }
         }
+        console.log(`Status verboden: (${hasForbiddenTime})`);
         if (hasForbiddenTime) {
             entry.time = origTime;
             break; // Stop de loop als er een verboden tijd is gevonden
@@ -192,15 +196,11 @@ function validTimeSchedule(schedule) {
       // Als er een verboden tijd is, voeg een kwartier toe aan alle tijden
       if (hasForbiddenTime) {
         iLoops++;
-        console.log(`We tellen er een kwartier bij (${schedule[0].time}`);
         for (let i = 0; i < schedule.length; i++) {
           schedule[i].time.setMinutes(schedule[i].time.getMinutes() + 15);
         }
-        console.log(`We hebben er een kwartier bijgeteld (${schedule[0].time}`);
       }
     }
-
-    console.log(`de hoeveelste loop: ${iLoops}`);
     
     if (iLoops < maxLoops) {
         return schedule;
