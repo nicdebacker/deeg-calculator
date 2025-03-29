@@ -1,6 +1,17 @@
 {
     "Broden": [
         {
+            "Name": "Multi-granen",
+            "Type": "witdesem",
+            "Selected": "No",
+            "Ingredients": {
+                "Multigranen": 700,
+                "Tarwe (T65)": 300, 
+                "Water": 600,
+                "Starter": 200,
+                "Zout": 20
+            }
+        },{
             "Name": "Wit (60% water)",
             "Type": "witdesem",
             "Selected": "No",
